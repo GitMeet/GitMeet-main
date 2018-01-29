@@ -27,10 +27,10 @@ To give project creators flexibility and control over their GitMeet projects, us
 
 To encourage or to award quality repositiory contributions by teammembers, GitMeet enables project creators to award bonus of 200 developer reputation to teammembers. Each user's developer reputation score displays the total developer reputation the user has gained on the site. Developer reputation is automatically awarded to a user for: 
 
-    -Creating a project 
-    -Having a join request accepted 
-    -Accepting a user to work on a specific posted job 
-    -Creating a job for a project
+*Creating a project 
+*Having a join request accepted 
+*Accepting a user to work on a specific posted job 
+*Creating a job for a project
 
 # 7. Developer Recommendations
 
