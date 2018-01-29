@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+
+    html, body {
+      margin: 0;
+
+
+    }
+#top_bar{
+  height:45px;
+  width:100%;
+  background: linear-gradient(to right, #9B42D9 , #F0AB33);
+}
+
+#top_bar .site_name{
+  position: relative;
+  float:left;
+  margin-left: 1%;
+  padding-top: 0.4%;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#B4B4B1;
+  font-size: 20px;
+}
+#top_bar .profile_photo1{
+  background-size: 31px;
+  float:right;
+  width:30px;
+  height:30px;
+  margin-top:0.4%;
+  margin-right: 2%;
+  border-radius:2px;
+
+}
+.input_button{
+  border: 3px white;
+  background-color: #10BC5F;
+  border-radius: 5px;
+  height:35px;
+  margin-top: 1.4%;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+.input_button:hover{
+  background-color: #2D9E50;
+  transition: all .15s ease-in-out;
+
+}
+#project_bar{
+  margin-top: 5%;
+  height:50%;
+}
+#project_bar .project{
+  margin:0 auto;
+  height:50%;
+  width:50%;
+  text-align: center;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+
+
+}
+#project_bar .project .title{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-style: solid;
+    border-width: 2px;
+  border-color: gray;
+}
+.disable_join_requests{
+  width:170px;
+  height:30px;
+  border-radius: 5px;
+  background-color: #fc9403;
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 7px;
+
+  padding-bottom: 30px;
+  color:white;
+
+}
+.disable_join_requests:hover{
+  color:white;
+  background-color: #de7e00;
+}
+.delete_project{
+  width:170px;
+  height:30px;
+  border-radius: 5px;
+  background-color: #DA380D;
+  text-align: center;
+  padding-left: -1px;
+  padding-top: 7px;
+  padding-bottom: 30px;
+  padding-right: -1px;
+  color:white;
+}
+.delete_project:hover{
+  color:white;
+  background-color: #C41301;
+}
+
+}
+.input-group-addon:hover{
+  background-color: #E6E6E6;
+
+}
+.no_jobs{
+  font-size: 20px;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+
+.project_tag_list{
+  width:auto;
+  height:40px;
+  border-width:3px;
+  border-color:#1D73E8;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top:5px;
+  padding-bottom: 5px;
+
+
+}
+.project_tag_list:hover{
+  background-color: #1D73E8;
+}
+.remove_project_icon{
+  color:#DEDEDE;
+
+}
+
+.remove_project_icon:hover{
+  color:gray;
+}
+.accept_user_project{
+  width:auto;
+  height:auto;
+  border:none;
+  background-color:#1FD962;
+  border-radius: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+.accept_user_project:hover{
+  background-color: #10AD49;
+  transition: all .15s ease-in-out;
+}
+.advanced_actions{
+  background-color: #1aaa55;
+  border-radius: 5px;
+  padding: 6px 10px;
+  border:none;
+}
+.advanced_actions:hover{
+  background-color: #168f48;
+}
+.team_display{
+  border-style:solid;
+  border-width:3px;
+  border-color:#28a745;
+  padding:8px 12px;
+  border-radius:4px;
+
+}
+.team_display:hover{
+  border-color: #218838;
+  border-radius:4px;
+  transition: all .1s ease-in-out;
+
+}
+
+</style>
+  <head>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+
+
+
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+
+--->
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
+
+
+      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+
+      <form class="form-inline" method='POST' action=''>
+
+        {%if visitor%}
+
+      <div class="btn-group" style='margin-right:20px;'>
+        <button type="button" class="btn btn-my_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='border-radius:3px;background-image:url({{view_avatar}});background-repeat: no-repeat;background-size:48px;height:48px;width:48px;border:2px white;float:right;'>
+
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" style='text-align:center;'>
+
+          <strong>{{visitor}}</strong>
+          <p>@{{visitor}}</p>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/{{visitor}}">Profile</a>
+          <a class="dropdown-item" href="/settings">Settings</a>
+          <a class="dropdown-item" href="#">Help</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href='/signout'>Sign Out</a>
+          </div>
+        </div>
+
+        {%endif%}
+        {%if visitor%}
+          <span class="badge badge-pill badge-primary" style='font-size:20px;margin-right:15px;'>{{visitor_reputation}}</span>
+
+        {%endif%}
+        {%if visitor%}
+        <div class="btn-group" style='margin-right:20px;'>
+          <button type="button" class="btn btn-my_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='float:right;border-radius:6px;height:40px;'>
+            <i class="fas fa-bell" style='font-size:1.3em'></i>
+            {%if job_requests.length + messages.length+invitation_messages.length+developer_recommendations.length > 0%}
+              <span class='message_text'></span>
+              <span class="badge badge-primary badge-pill" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;font-size:14px;">{{job_requests.length+messages.length+invitation_messages.length+developer_recommendations.length}}</span>
+            {%endif%}
+            </i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" style='text-align:center;width: 300px !important;'>
+
+            <!--<div class="dropdown-divider"></div>-->
+            <!--
+            Here, will probabily have to trigger popup with user developer report
+            Instead of full request, just say "New Request from {{username}}"
+            -->
+            {%if job_requests.length > 0%}
+            {%for request in job_requests%}
+              <a href='' style='text-decoration:none;color:black' data-toggle="modal" data-target="#{{request.div_id}}">New request from <strong>{{request.user.username}}</strong></a>
+              <div class="dropdown-divider"></div>
+
+            {%endfor%}
+            {%else%}
+            <i>No developer requests</i>
+            <div class="dropdown-divider"></div>
+
+            {%endif%}
+            {%if messages.length%}
+            {%for message in messages%}
+              <p>Your request to join <a href="{{message}}" style='text-decoration:none;color:black;'><strong>{{message.projectname}}</strong></a> has been accepted!</p>
+              <div class="dropdown-divider"></div>
+            {%endfor%}
+            {%endif%}
+
+            {%if invitation_messages.length > 0%}
+              {%for message in invitation_messages%}
+                <a href='{{message}}' style='color:black;text-decoration:none;'><strong>{{message.from_user}}</strong> is inviting you to join <strong>{{message.projectname}}</strong></a>
+                <div class="dropdown-divider"></div>
+              {%endfor%}
+            {%endif%}
+            {%if developer_recommendations.length > 0%}
+            {%for recog in developer_recommendations%}
+              <p>You have a new developer recommendation for project <strong>{{recog.projects}}</strong>: <a href='/{{recog.recommending}}' style='text-decoration:none; color:black;'><strong>{{recog.recommending}}</strong></a></p>
+              <div class="dropdown-divider"></div>
+            {%endfor%}
+            {%endif%}
+            <a href='/clear_all' style='text-decoration:none;color:black'><strong>Clear All</strong></a>
+            </div>
+          </div>
+
+      {%endif%}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search_gitmeet'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </nav>
+    {%if job_requests%}
+      {%for request in job_requests%}
+      <div class="modal bd-example-modal-lg" id="{{request.div_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style='width:auto;'>
+              <img src="{{request.user.avatar}}" class="rounded float-left" alt="..." style='background-size:50px;width:50px;height:50px;'>
+              <h5 class="modal-title" id="exampleModalLabel" style='margin-left:2%;'>
+
+
+                Response to job <strong style='color:blue'>{{request.potential_job.title}}</strong> on project <strong style='color:blue'>{{request.project}}</strong>:
+
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!--Request to join @{{request.project}} for job {{request.potential_job.title}}-->
+              <div class="card-group">
+
+                <div class="card" style='border-top:none;border-left:none;border-bottom:none;text-align:center;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>
+
+                  <div class="card-body">
+                    <h5 class="card-title" style='font-size:30px;'><strong><a href='/{{request.user.username}}' style='text-decoration:none;color:black'>{{request.user.username}}</a></strong></h5>
+                    <a href="https://github.com/{{request.user.username}}" class="github_home_page" style='color:black;text-decoration:none;'>
+
+                    <i class="fab fa-github" style="font-size: 2em;padding-left:10px;"></i>
+
+
+                      {{request.user.username}}
+                    </a>
+                    <div class='spacing' style='height:25px;'></div>
+                    {%if request.user.extra.tags%}
+                      {%for tag, color in request.user.extra.tags%}
+                          <span class="badge badge-primary" style='background-color:{{color}};height:25px;font-size:15px;margin-left:10px;'>{{tag}}</span>
+                        {%endfor%}
+                    {%endif%}
+                    <div class='spacing' style='height:30px;'></div>
+                    <p class="card-text"><strong style="font-weight:bold;color:blue;">{{request.user.extra.reputation}}</strong> developer reputation</p>
+                    <div class='spacing' style='height:30px;'></div>
+                    {%if request.user.summary != ''%}
+                    <div class="card border-primary mb-3" style="max-width: 20rem;border-radius:10px;">
+                      <div class="card-body text-primary">
+
+                        <p class="card-text" style='color:black'>{{request.user.summary}}</p>
+                      </div>
+                    </div>
+                    {%endif%}
+
+
+
+                  </div>
+                </div>
+                <div class="card" style='border-top:none;border-bottom:none;border-right:none;'>
+
+                  <div class='spacing'></div>
+                  <div class="card-body" style='text-align:center;'>
+                    <h5 class="card-title" style='font-size:35px;'><strong><u>Experience</u></strong></h5>
+
+                    {%if request.user_experience.length > 0%}
+                    <table class="table">
+                      <thead>
+                        <tr>
+
+                          <th scope="col" style='color:blue'>Projectname</th>
+                          <th scope="col"><span style='color:#F0C710'>{{request.user.username}}</span> worked with:</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {%for project_experience in request.user_experience%}
+                        <tr>
+
+                          <td><a href='{{project_experience}}' style='text-decoration:none;color:black;'><strong>{{project_experience.projectname}}</strong></a></td>
+
+                          <td>
+
+                            {%if project_experience.is_tags > 0%}
+                              {%for tag in project_experience%}
+                                <span class="badge badge-primary">{{tag}}</span>
+                              {%endfor%}
+                            {%else%}
+                              <i>No tags listed</i>
+                            {%endif%}
+                          </td>
+
+                        </tr>
+
+
+                        {%endfor%}
+
+
+
+                      </tbody>
+                    </table>
+                    {%else%}
+
+                      <i>{{request.user.username}} has not joined any projects</i>
+                    {%endif%}
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer" style='text-align:center;'>
+              <a href='{{request}}' class='accept_user_project' style='text-decoration:none;color:white;'>
+                <i class="fas fa-user-plus"></i>
+                Add {{request.user.username}} to project</a>
+              <a href='{{request.decline_request}}' class='decline_user_project'>
+                <i class="fas fa-minus-circle"></i>
+                Decline Request</a>
+
+            </div>
+            </div>
+          </div>
+        </div>
+
+      {%endfor%}
+    {%endif%}
+
+  <!--
+    <div id='project_bar'>
+      <div class="project">
+        <div class='title'>
+          <h1>Project title</h1>
+        </div>
+      </div>
+    </div>
+  -->
+  <div class='spacer' style='height:50px;'></div>
+
+  <!-- important vars:-->
+        <!--gitter_link-->
+        <!--projectname-->
+        <!--gitlab_link-->
+        <!--description-->
+        <!--project_tags-->
+
+  <!------------->
+
+  <!--new starts here--->
+  <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md">
+          <div class="card text-white bg-warning mb-3" style="mqx-width: 30rem;margin:0 auto;border:none;">
+
+          <div class="card-body">
+            <h5 class="card-title"><strong>{{projectname}}</strong></h5>
+            <p class="card-text">{{description}}</p>
+
+
+            {%if project_tags%}
+              {%for tag in project_tags%}
+                {%if tag%}
+                  <span class="project_tag_list" style='border-style:solid;border-width:1.5px;border-color:#1D73E8;border-radius:4px;'>{{tag}}</span>
+                {%endif%}
+              {%endfor%}
+            {%endif%}
+          </div>
+          <div class="card-footer" style='background-color:white;border-style:solid;border-width:1px;border-color:#D1D0D1;border-top:none;'>
+
+            <div class="container">
+              <div class="row">
+                  <div class="col">
+
+                    <p style='color:black;'><strong style='color:#C011C0;font-size:20px;'>{{jobs.length}}</strong> {{"job" if jobs.length == 1 else "jobs"}}</p>
+
+                  </div>
+                  <div class="col">
+                    {%if team.length == 0%}
+                      <p style='color:black;'><strong style='color:#C011C0;font-size:20px;'>0</strong> Project members</p>
+                    {%else%}
+                      <!--<p style='color:black;'><strong style='color:#C011C0;font-size:20px;'>{{team.length}}</strong> {{"Project members" if team.length > 1 else "Project member"}}</p>-->
+                      <a href='' style='text-decoration:none;color:black' data-toggle="modal" data-target=".user-listing-modal-lg" class='team_display'><strong style='color:#C011C0;font-size:20px;'>{{team.length}}</strong> {{"Project members" if team.length > 1 else "Project member"}}</a>
+                      <div class="modal user-listing-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel" style='color:black;'>Team members for <span style='color:#EECA13'>{{projectname}}</span></h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col">
+                                    <label for='myInput' style='color:black' style='float:right;'>Filter or find teammembers:</label>
+                                    <input class="form-control" id="myInput" type="text" placeholder="Find..." style='width:50%;'>
+                                    <br>
+                                  </div>
+                                  <div class="col-12 col-md-auto">
+                                  <button type="button" class="btn btn-success" id = 'toggle_button' style='float:right;' name = 'toggle_dark_theme' onclick = "change_background_color()">Toggle Theme</button>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <table id = "user_table_listing" class="table table-striped" style='color:black;'>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Project Job</th>
+                                    <th scope="col"></th>
+                                    <th scope='col'></th>
+
+                                  </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                  <tr>
+
+                                    <td><strong>{{owner}}</strong>
+                                      {%if visitor == owner%}
+                                        <span class="badge badge-secondary" style='background-color:#1aaa55;'>It's you</span>
+                                      {%endif%}
+                                    </td>
+                                    <td>Project Creator</td>
+                                    <td>Owner</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+
+                              {%for teammember in team%}
+
+                              <tr>
+
+                                <td><a href='/{{teammember.name}}' style='text-decoration:none;color:black;'><strong class ='username_listing_table' style='color:black;'>{{teammember.name}}</strong></a>
+                                  {%if visitor == teammember.name%}
+                                    <span class="badge badge-secondary" style='background-color:#1aaa55;'>It's you</span>
+                                  {%endif%}
+                                </td>
+                                <td>Team member</td>
+                                <td>{{teammember.job_title}}</td>
+                                <td><!--<i class="fas fa-cog"></i>-->
+                                  {%if visitor == owner%}
+                                  <!--
+                                  <div class="dropdown">
+                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='background:none;border:none;'>
+                                      <i class="fas fa-cog" style='font-size:1.3em;color:black;'></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="{{teammember}}">Remove {{teammember.name}} from job</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="{{teammember.award_bonus}}">Award bonus (200 developer rep)</a>
+                                    </div>
+                                  </div>
+                                  --->
+                                    <a href='{{teammember.award_bonus}}' class='award_bonus' style='text-decoration:none;' data-toggle="tooltip" data-placement="bottom" title="Award Bonus">
+
+
+
+                                      Award Bonus <span class="badge badge-secondary" style='background-color:#ffc107'>200</span>
+
+                                    </a>
+                                  {%endif%}
+                                </td>
+                                <td>
+                                  {%if visitor == owner%}
+                                  <a href='{{teammember}}' style='text-decoration:none;' class='remove_user' data-toggle="tooltip" data-placement="bottom" title="remove user from job">
+                                    <i class="fas fa-times" style='font-size:1.5em;color:gray;'></i>
+
+
+                                  </a>
+                                  {%endif%}
+                                </td>
+                              </tr>
+
+                              {%endfor%}
+                            </tbody>
+                            </table>
+                            </div>
+
+                            </div>
+                          </div>
+                        </div>
+                    {%endif%}
+                  </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+        {%if visitor == owner%}
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_project">
+          <i class="fas fa-bars"></i>
+          Project settings</button>
+        <div class="modal fade" id="update_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style='color:black;'>Project Settings for <span style='color:#EECA13'>{{projectname}}</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style='text-align:left;'>
+                <form method='POST' action='' id="needs-validation" novalidate>
+                  <div class="form-row align-items-center">
+                    <div class='col'>
+                      <label for="projectname" class="mr-sm-2">Project Name</label>
+                      <input class="form-control" id='projectname' type="text" placeholder="{{projectname}}" readonly>
+                    </div>
+                    <div class='col'>
+                      <label for="project_id" class="mr-sm-2">Project Id</label>
+                      <input class="form-control" id='project_id' type="text" placeholder="{{id}}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new_description" class="col-form-label">Description</label>
+                    <textarea class="form-control" id="new_description" name='new_description' required>{{description}}</textarea>
+                    <div class="invalid-feedback">
+                      Cannot be left blank
+                    </div>
+                    <div class='spacer1' style='height:20px;'></div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><i class="fab fa-gitter" style='padding-right:6px;font-size: 1.5em;'></i>Gitter link</span>
+                      <input type="text" class="form-control" aria-label="Project link" aria-describedby="basic-addon1" name='gitter_link' value='{{gitter_link}}'>
+                    </div>
+                    <div class='spacer1' style='height:20px;'></div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><i class="fab fa-gitlab" aria-hidden="true" style='padding-right:6px;font-size: 1.5em;'></i> Gitlab link</span>
+                      <input type="text" class="form-control" aria-label="Project link" aria-describedby="basic-addon1" name='gitlab_link' value="{{gitlab_link}}">
+                    </div>
+                    <div class='spacer' style='height:15px;'></div>
+                    <label for="tags">Project Tags</label>
+                    <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scaping,Multi-Processing" value='{{tag_values}}'>
+                    <small id="tag_instructions" class="form-text text-muted">
+                      Enter project tags separated by commas
+                    </small>
+                    <div class='spacer' style='height:15px;'></div>
+                    <div id="advanced" data-children=".item">
+                       <div class="item">
+                         <a data-toggle="collapse" data-parent="#advanced" href="#advanced_actions" aria-expanded="true" aria-controls="advanced_actions" class='advanced_actions' style='text-decoration:none;color:white;'>
+                           Advanced
+                         </a>
+                         <div id="advanced_actions" class="collapse" role="tabpanel">
+                           <div class='spacing' style='height:10px;'></div>
+                           <div class='actions'>
+                           <nav class="navbar navbar-light bg-light1" style='background-color:#F6F5F5;'>
+                             {%if not disable_join%}
+                             <a href = '/disable_join/{{projectname}}' class='disable_join_requests' style='text-decoration:none;'>Disable requests</a>
+
+
+                             <div class="alert alert-warning" role="alert">
+                               Disabling requests will remove all job listings, but keep the current team
+                             </div>
+                             {%else%}
+                             <a href='/enable_join/{{projectname}}' class='disable_join_requests' style='text-decoration:none;'> Enable join requests</a>
+                             <div class="alert alert-info" role="alert">
+                               Enabling join requests will allow for the posting and viewing of project jobs
+                             </div>
+                             {%endif%}
+                           </nav>
+                         </div>
+                         <div class='spacer' style='height:20px;'></div>
+
+                         </div>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                </form>
+
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      {%endif%}
+    </div>
+    {%if visitor == owner%}
+      {%if not disable_join%}
+      <div class="col-sm">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_Job" style='margin-left:10px;'>
+          <i class="fas fa-plus"></i> Add Job
+        </button>
+        <div class="modal fade" id="create_Job" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style='text-align:left;'>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Job for <span style='color:#EECA13'>{{projectname}}</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method='POST' action="" id="needs-validation">
+                  <div class="form-group">
+                    <label for="title">Job title</label>
+                    <div class='break_line' style='width:5px;'></div>
+                    <input type="title" class="form-control" id="title" aria-describedby="emailHelp" name='job_title' required>
+                    <div class="invalid-feedback">
+                      Title of job cannot be left blank
+                    </div>
+                    <div class='break_line' style='width:5px;'></div>
+                    <div class='spacer' style='height:20px;'></div>
+                    <label for="description">Job Tasks</label>
+                    <textarea class="form-control" id="description" rows="3" name='job_description' aria-describedby="instructions" required></textarea>
+                    <small id="instructions" class="form-text text-muted">
+                      Add revelent duties
+                    </small>
+                  </div>
+                  <div class="invalid-feedback">
+                    Description of job cannot be left blank
+                  </div>
+                  <label for='specific_bug'>Bug to fix</label>
+                  <input type="text" class="form-control" id="tags" aria-describedby="emailHelp" name='bug_to_fix' required>
+                  <div class="invalid-feedback">
+                    Assigned bug cannot be left blank
+                  </div>
+                  <div class='height:50px;'></div>
+                  <label for="tags">Tags</label>
+                  <input type="text" class="form-control" id="tags" aria-describedby="emailHelp" name='job_tags' data-toggle="tooltip" title="add technologies needed, urgency level, or developer level" placeholder='i.e Bug-Fix,Beginner,Python,help wanted' required>
+                  <small id="instructions" class="form-text text-muted">
+                    Add tags separated by a comma. Each tag must be under 13 characters
+                  </small>
+                  <div class='spacer20' style='height:10px;'></div>
+                  {%if bugs%}
+                  <label for='issue_list'>Assign Issue</label>
+
+                   <select class="custom-select" id='issue_list' name='bug_listing'>
+                     <option selected>Select issue</option>
+                     {%for url, title in bugs%}
+                       <option>{{url}}</option>
+
+                     {%endfor%}
+                   </select>
+
+                   <div class="alert alert-info" role="alert">
+                     Assigning project issues helps organize and delegate tasks
+                   </div>
+                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                     Tip: use issue listings as todo lists for clarity
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                   </div>
+                 {%endif%}
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                  </div>
+
+                </form>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endif%}
+    {%endif%}
+    {%if visitor == owner%}
+    <div class="col-sm">
+      <button type='button' class="btn btn-danger" data-toggle="modal" data-target="#{{projectname}}DeleteCenter">
+        <i class="fas fa-trash-alt"></i>
+        Delete Project
+      </button>
+      <div class="modal" id="{{projectname}}DeleteCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style='border-bottom:none;'>
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style='margin:0 auto;text-align:center;'>
+              <h1 style='font-size:20px;'>Are you sure you want to remove <span style='color:gray;font-size:20px;'>{{projectname}}</span>?<h1>
+
+                <strong style='font-size:16px;'>Removed jobs cannot be restored!</strong>
+                <div class='spacer' style='height:10px;'></div>
+              <a href='/delete/{{projectname}}' class="btn btn-danger">Delete</a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" style='margin-left:20px;'>Cancel</button>
+
+            </div>
+            <div class="modal-footer" style='border-top:none;'>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {%endif%}
+  </div>
+</div>
+        </div>
+
+        <div class="col-md-auto">
+          <ul class="list-group" style='text-align:center;'>
+            <li class="list-group-item active" style='text-align:center;background-color:#16C679;border-color:#16C679'>Locations</li>
+            <li class="list-group-item" style='text-align:center;background-color:#24292e;color:white;'><strong>Project Repository:</strong></li>
+            <li class="list-group-item">
+              <i class="fab fa-github" style="font-size: 2em;padding-left:10px;"></i>
+              <a href="https://github.com/{{owner}}/{{projectname}}" style='font-size:16px;'>{{owner}}/{{projectname}}</a>
+            </li>
+            {%if gitlab_link%}
+            <li class="list-group-item" style='color:#e14329;text-align:center;background-color:#6b4fbb;'><strong>Project Management:</strong></li>
+            <li class="list-group-item"> <!--#e14329-->
+              <i class="fab fa-gitlab" style="font-size: 2em;padding-left:10px;"></i>
+              <a href="{{gitlab_link}}" style='font-size:16px;float:right;'>{{projectname}} on Gitlab</a>
+            </li>
+            {%endif%}
+            {%if gitter_link%}
+            <li class="list-group-item" style='color:white;text-align:center;background-color:#f68d42;'><strong>Chat With Project Team:</strong></li>
+            <li class="list-group-item"> <!--#6b4fbb-->
+
+
+                <a href="{{gitter_link}}" style='font-size:16px;text-align:center;'><i class="fab fa-gitter" style='font-size:1.9em;padding-right:10px;color:black'></i>{{projectname}}/Lobby</a>
+
+            </li>
+            {%endif%}
+          </ul>
+        </div>
+      </div>
+  </div>
+
+
+
+
+  <div class='spacing' style='height:30px;'></div>
+  <!--start of job listings-->
+
+  {%if not disable_join%}
+    {%for row in jobs%}
+      <div class="card-deck" style='margin:0 auto;'>
+          {%for job in row%}
+          <div class="card border-primary mb-3" style="max-width:23em;text-align:center;">
+            <div class="card-header" style='background-color:white;border-bottom:none;'>
+              {%if visitor == owner%}
+            <button type="button" class="remove_project_icon" data-toggle="modal" data-target="#{{job.id}}Remove" style='float:right;border:none;background:none;'>
+              <i class="fas fa-times" style='font-size:1.7em'></i>
+            </button>
+
+
+<!-- Modal -->
+
+            {%endif%}
+            <h5 class="card-title" style='font-size:25px;'>{{job.title}}</h5>
+            </div>
+            <div class="card-body text-primary">
+
+
+              <p class="card-text">
+                <i class="fas fa-tasks" style='font-size:1.2em;'></i>
+                {{job.description}}</p>
+                <div class='small_space' style='height:1px;width:85%;background-color:#CACACA;margin:0 auto;'></div>
+
+              <p class="card-text" style='padding-top:20px;'>
+                <i class="fas fa-bug" style='font-size:1.4em;'></i>
+
+
+                {{job.bugs}}
+
+              </p>
+            </div>
+            <div class="card-footer" style='border-top:none;background-color:#ffc107;'>
+
+              {%for row in job.tags%}
+                {%for tag in row%}
+                  <span class="project_tag_list" style='border-style:solid;border-width:1.5px;border-color:#1D73E8;border-radius:4px;color:white;margin-top:10px;'>{{tag}}</span>
+                {%endfor%}
+                <div class='spacer' style='height:10px;'></div>
+              {%endfor%}
+              <div class='spacer' style='height:20px;'></div>
+              {%if visitor != owner%}
+                <!--<button type="button" class="btn btn-link">Join</button>-->
+                {%if visitor%}
+                  <a href='/join_project/{{projectname}}/{{job.id}}'>Join</a>
+                {%endif%}
+
+              {%endif%}
+
+            </div>
+            <div class="card-footer" style='border-top:none;background-color:#BCBCBC;'>
+              <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://www.facebook.com/profile.php?id=100011354314736" title="Facebook share" target="_blank" style='color:black;text-decoration:none;'>
+              <span class="badge badge-secondary" style='background-color:#3b5998;'><i class="fab fa-facebook-f" style='font-size:1.6em;color:white;margin-left:4px;margin-right:4px;'></i></span>
+              </a> <!-- here, will have to change with gitmeet profile on facebook-->
+              <a class="twitter customer share" href="https://twitter.com/share?url=https://gitmeet.com/{{owner}}/{{projectname}}&amp;text=Can you assist with {{job.title}} for project {{projectname}} on @GitMeet: {{job.title}}&amp;hashtags=GitMeet" title="Twitter share" target="_blank" style='text-decoration:none;color:black;'>
+                <span class="badge badge-secondary" style='background-color:#55acee;'><i class="fab fa-twitter" style='font-size:1.6em;color:white;'></i></span>
+
+              </a>
+              <a class="google_plus customer share" href="https://plus.google.com/share?url=https://gitmeet.com" title="Google Plus Share" target="_blank" style='text-decoration:none;color:black'>
+                <span class="badge badge-secondary" style='background-color:#dd4b39;'><i class="fab fa-google-plus-g" style='font-size:1.6em;color:white;'></i></span>
+
+
+
+              </a> <!--here, will have to change with gitmeet profile on Google + -->
+
+            </div>
+
+          </div>
+
+          {%endfor%}
+      </div>
+    {%endfor%}
+
+  {%endif%}
+
+
+  {%for row in jobs%}
+    {%for job in row%}
+  <div class="modal" id="{{job.id}}Remove" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style='border-bottom:none;'>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style='margin:0 auto;text-align:center;'>
+          <h1 style='font-size:20px;'>Are you sure you want to delete this job?<h1>
+
+          <strong style='font-size:16px;'>Removed jobs cannot be restored!</strong>
+          <div class='spacer' style='height:10px;'></div>
+          <a href='/delete_job/{{projectname}}/{{job.id}}' class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+            Delete</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style='margin-left:20px;'>Cancel</button>
+
+        </div>
+        <div class="modal-footer" style='border-top:none;'>
+        </div>
+      </div>
+    </div>
+  </div>
+    {%endfor%}
+  {%endfor%}
+
+  <!--end of job listings-->
+
+
+  <div class='spacer' style='height:60px;'></div>
+  <div class="container" style='text-align:center;'>
+    <div class="row">
+      <div class="col-sm">
+        <div class="col" style='margin-top:1em;'>
+          <a href='http://www.twitter.com' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
+          <a href='http://www.facebook.com' style='text-decoration:none'><i class="fab fa-facebook" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+          <a href='http://www.youtube.com' style='text-decoration:none'><i class="fab fa-youtube" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+
+          <a href='http://www.linkedin.com' style='text-decoration:none'><i class="fab fa-linkedin" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class='spacer' style='height:30px;'></div>
+    <div class="row">
+      <div class="col-sm">
+        <a href='/report_issues' style='font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;text-decoration:none;color:black;font-size:20px;'>Report Issues</a>
+      </div>
+      <div class="col-sm">
+        <a href='/terms_and_conditions' style='font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;text-decoration:none;color:black;font-size:20px;'>Terms of service</a>
+      </div>
+      <div class="col-sm">
+        <a href='/about' style='font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;text-decoration:none;color:black;font-size:20px;'>About</a>
+      </div>
+    </div>
+  </div>
+  </body>
+  <script>
+  (function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+      var form = document.getElementById("needs-validation");
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    }, false);
+  })();
+
+
+
+  ;
+
+  $(document).ready(function ($) {
+    $('.customer.share').on("click", function(e) {
+      $(this).customerPopup(e);
+    });
+  });
+  ;(function($){
+
+  /**
+   * jQuery function to prevent default anchor event and take the href * and the title to make a share popup
+   *
+   * @param  {[object]} e           [Mouse event]
+   * @param  {[integer]} intWidth   [Popup width defalut 500]
+   * @param  {[integer]} intHeight  [Popup height defalut 400]
+   * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
+   */
+  $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
+
+    // Prevent default anchor event
+    e.preventDefault();
+
+    // Set values for window
+    intWidth = intWidth || '500';
+    intHeight = intHeight || '400';
+    strResize = (blnResize ? 'yes' : 'no');
+
+    // Set title and open popup with focus on it
+    var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
+        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
+        objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+  }
+
+  /* ================================================== */
+
+
+
+  }(jQuery));
+  {%if new_rep.rep > 0%}
+  var delay = 2000;
+         setTimeout(function() {
+           $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer repution!',{
+               type: 'success',
+               delay: 4000,
+               width: 400,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+  {%endif%}
+  {%if tips%}
+  var delay = 1000;
+         setTimeout(function() {
+           $.bootstrapGrowl('{{tips}}',{
+               type: 'success',
+               delay: 4000,
+               width: 450,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+  {%endif%}
+
+  {%if confirmation%}
+  var delay = 1000;
+         setTimeout(function() {
+           $.bootstrapGrowl('{{confirmation}}',{
+               type: 'success',
+               delay: 4000,
+               width: 450,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+  {%endif%}
+  {%if warning%}
+
+  var delay = 600;
+         setTimeout(function() {
+           $.bootstrapGrowl("{{warning}}",{
+               type: "danger",
+               delay: 4000,
+               width: 450,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+    {%endif%}
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+function change_background_color(){
+
+  var el = document.getElementById('user_table_listing');
+
+  var button_el = document.getElementById("toggle_button");
+  if (button_el.name === 'toggle_dark_theme')
+  {
+    el.className = 'table table-striped table-dark';
+    el.style.color = 'white';
+    var el1 = document.getElementsByClassName('username_listing_table');
+
+    for (var i = 0; i < el1.length; i++)
+    {
+      el1[i].style.color = 'white'
+
+    }
+    button_el.name = "toggle_light_theme"
+  }
+  else {
+      el.className = 'table table-striped';
+      button_el.name = 'toggle_dark_theme';
+      el.style.color = 'black';
+      var el1 = document.getElementsByClassName('username_listing_table');
+      for (var i = 0; i < el1.length; i++)
+      {
+        el1[i].style.color = 'black'
+
+      }
+  }
+
+
+
+}
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+</script>
+</html>

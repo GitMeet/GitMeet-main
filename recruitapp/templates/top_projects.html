@@ -1,0 +1,318 @@
+<html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+.input_button{
+  border-radius: 6px;
+  border-width:2px;
+  border-color: #50B240;
+  background-color: none;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  width:100px;
+  height:35px;
+  color:white;
+  background-color: Transparent;
+}
+.input_button:hover{
+  background-color: #50B240;
+  transition: all .15s ease-in-out;
+}
+.title{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#C2C1C1;
+  font-size: 30px;
+}
+.blog_link{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.for_creators{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.for_developers{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.jumbotron{
+  position: relative;
+  text-align: center;
+  /*
+     background-image: url("https://i.pinimg.com/originals/74/be/80/74be807dcfa4080be4971e1ad03e938a.jpg");
+     background-repeat: no-repeat;
+    background-size: cover;
+    */
+  /*  background-color:#57389E;*/
+
+}
+.gitlab_logo{
+   background-image: url("https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/wordmark/wm_no_bg.png");
+   background-repeat: no-repeat;
+  background-size: cover;
+}
+.main_header{
+  color:#ACACAC;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size:60px;
+
+}
+.enter{
+  position: relative;
+  text-align: center;
+  width:500px;
+  height:180px;
+  background-color: #dfe1e0;
+  border-radius: 6px;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+.login_button{
+  top:60%;
+  width:50%;
+  height:300px;
+  background-color: black;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 6px;
+  margin-top: : 50%;
+  text-decoration: none;
+  font-size: 20px;
+  color:white;
+}
+.login_button:hover{
+  color:white;
+}
+.extra_text{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#ACACAC;
+}
+.extra_text1{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#7E7E7E;
+  font-size:20px;
+}
+.begin{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#ACACAC;
+  font-size: 50px;
+}
+.inviteusers{
+  width:auto;
+  height:auto;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-width:1px;
+  background-color: #E53D3D;
+}
+.inviteusers:hover{
+  background-color: #BC0808;
+  transition: all .15s ease-in-out;
+}
+.createprojects{
+
+  width:auto;
+  height:auto;
+
+  background-color: #F0AB33;
+
+  text-decoration: none;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-width:1px;
+  border-color:  #F0AB33;
+}
+.findprojects{
+  width:auto;
+  height:auto;
+  background-color: #B24AFF;
+  text-decoration: none;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin:10%;
+}
+.createprojects:hover{
+  background-color: #C38720;
+  transition: all .15s ease-in-out;
+  border-width:1px;
+  border-color: #C38720;
+}
+.findprojects:hover{
+
+  width:auto;
+  height:auto;
+  background-color: #8B28D5;
+  transition: all .15s ease-in-out;
+  text-decoration: none;
+}
+.built_on{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:gray;
+}
+.github_logo{
+  background-image: url(/static/images/GitHub_Logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 130px;
+
+}
+.github_icon{
+  background-image: url(/static/images/GitHub-Mark-120px-plus.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 78px;
+}
+.gitter_logo{
+  /*
+  background-image: url(/static/images/svgporn-gitter.png);
+  */
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/2/2f/Gitter_logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100px;
+}
+.learn_more_button{
+  width:auto;
+  height:auto;
+  padding: 10px 15px;
+  border-style: solid;
+  border-color:white;
+  color:white;
+  border-radius: 6px;
+  border-width: 1.6px;
+  font-size:20px;
+}
+.learn_more_button:hover{
+  background-color: white;
+  color:#6f42c1;
+  transition: all .15s ease-in-out;
+}
+.project_tag_list{
+  width:auto;
+  height:40px;
+  border-width:3px;
+  border-color:#1D73E8;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top:5px;
+  padding-bottom: 5px;
+
+
+}
+.project_tag_list:hover{
+  background-color: #1D73E8;
+}
+</style>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+</head>
+  <body>
+    <nav class="navbar navbar-light" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);height:70px;'>
+      <!--
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/GitMeetLogo.png" width="30" height="30" alt="">
+      </a>
+      --->
+
+      <h1 class='title'>GitMeet</h1>
+
+      <ul class="navbar-nav mr-auto" style='float:right;'>
+
+      <li class="nav-item active">
+        <a class="blog_link" href="#" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+      </li>
+
+      </ul>
+      <form class="form-inline" style='margin-right:1%;margin-top:1%;' method='POST' action=''>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name='search_gitmeet'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='border-radius:6px;border-width:1.6px;color:white;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>Search</button>
+    </form>
+  </nav>
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style='background-color:white;'>
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Top posts</li>
+    </ol>
+  </nav>
+  <nav class="navbar navbar-light" style='background-color:#6f42c1;'>
+    <h1 style='font-size:20px;color:white;'>Best projects for the week of <strong>{{toproject.time_now}}</strong></h1>
+  </nav>
+  <div class='spacer' style='height:30px;'></div>
+  <div class="alert alert-secondary" role="alert" style='text-align:center;width:60em;margin:0 auto;'>
+    Weekly top projects are chosen by the developers of GitMeet and are the most active projects on the site with the most teammembers recruited and the most number of jobs posted
+  </div>
+  {%for project in toproject%}
+  <div class='spacer' style='height:30px;'></div>
+    <div class="card text-white bg-warning mb-3" style="max-width: 50rem;margin:0 auto;border-bottom:none;border-left:none;border-right:none;">
+      <div class="card-body">
+        <h4 class="card-title"><a href='/{{project.owner}}/{{project.project.title}}' style='color:white;'><strong>{{project.project.title}}</strong></a></h4>
+        <h5 class="card-title"><strong>Owner: </strong><a href='/{{project.owner}}' style='color:white;'>{{project.owner}}</a></h5>
+        <p class="card-text" style='font-size:18px;'>{{project.project.description}}</p>
+        {%for tag in project.project.options.tags%}
+          <span class="project_tag_list" style='border-style:solid;border-width:1.5px;border-color:#1D73E8;border-radius:4px;'>{{tag}}</span>
+        {%endfor%}
+      </div>
+      <div class="card-footer" style='background-color:white;border-style:solid;border-width:1px;border-color:#D1D0D1;border-top:none;'>
+        <div class="container" style='color:black;'>
+          <div class="row">
+            <div class="col-sm">
+              <span style='color:purple'><strong>{{project.project.jobs.length}}</strong></span> {{"jobs" if project.project.jobs.length != 1 else "job"}}
+            </div>
+            <div class="col-sm">
+              <span style='color:purple'><strong>{{project.project.team.length}}</strong></span> {{'teammembers' if project.project.team.length != 1 else "teammember"}}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {%endfor%}
+
+  </body>
+</html>

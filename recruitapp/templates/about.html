@@ -1,0 +1,292 @@
+<html>
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+  .input_button{
+    border-radius: 6px;
+    border-width:2px;
+    border-color: #50B240;
+    background-color: none;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    width:100px;
+    height:35px;
+    color:white;
+    background-color: Transparent;
+  }
+  .input_button:hover{
+    background-color: #50B240;
+    transition: all .15s ease-in-out;
+  }
+  .title{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#C2C1C1;
+    font-size: 30px;
+  }
+  .blog_link{
+    color:#AFAEAE;
+    margin-left: 40px;
+    font-size: 20px;
+    float:right;
+  }
+  .for_creators{
+    color:#AFAEAE;
+    margin-left: 40px;
+    font-size: 20px;
+    float:right;
+  }
+  .for_developers{
+    color:#AFAEAE;
+    margin-left: 40px;
+    font-size: 20px;
+    float:right;
+  }
+  .jumbotron{
+    position: relative;
+    text-align: center;
+    /*
+       background-image: url("https://i.pinimg.com/originals/74/be/80/74be807dcfa4080be4971e1ad03e938a.jpg");
+       background-repeat: no-repeat;
+      background-size: cover;
+      */
+    /*  background-color:#57389E;*/
+
+  }
+  .gitlab_logo{
+     background-image: url("https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/wordmark/wm_no_bg.png");
+     background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .main_header{
+    color:#ACACAC;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size:60px;
+
+  }
+  .enter{
+    position: relative;
+    text-align: center;
+    width:500px;
+    height:230px;
+    background-color: #dfe1e0;
+    border-radius: 6px;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+  }
+  .login_button{
+    top:60%;
+    width:50%;
+    height:300px;
+    background-color: black;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 6px;
+    margin-top: : 50%;
+    text-decoration: none;
+    font-size: 20px;
+    color:white;
+  }
+  .login_button:hover{
+    color:white;
+  }
+  .extra_text{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#ACACAC;
+  }
+  .extra_text1{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#7E7E7E;
+    font-size:20px;
+  }
+  .begin{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#ACACAC;
+    font-size: 50px;
+  }
+  .createprojects{
+
+    width:auto;
+    height:auto;
+
+    background-color: #F0AB33;
+
+    text-decoration: none;
+    color:white;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-width:1px;
+    border-color:  #F0AB33;
+  }
+  .findprojects{
+    width:auto;
+    height:auto;
+    background-color: #B24AFF;
+    text-decoration: none;
+    color:white;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin:10%;
+  }
+  .createprojects:hover{
+    background-color: #C38720;
+    transition: all .15s ease-in-out;
+    border-width:1px;
+    border-color: #C38720;
+  }
+  .findprojects:hover{
+
+    width:auto;
+    height:auto;
+    background-color: #8B28D5;
+    transition: all .15s ease-in-out;
+    text-decoration: none;
+  }
+  .built_on{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:gray;
+  }
+  .github_logo{
+    background-image: url(/static/images/GitHub_Logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 130px;
+
+  }
+  .github_icon{
+    background-image: url(/static/images/GitHub-Mark-120px-plus.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 78px;
+  }
+  .gitter_logo{
+    /*
+    background-image: url(/static/images/svgporn-gitter.png);
+    */
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/2/2f/Gitter_logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100px;
+  }
+  </style>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <nav class="navbar navbar-light" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);height:70px;'>
+    <!--
+    <a class="navbar-brand" href="#">
+      <img src="/static/images/GitMeetLogo.png" width="30" height="30" alt="">
+    </a>
+    --->
+
+    <h1 class='title'>GitMeet</h1>
+
+    <ul class="navbar-nav mr-auto" style='float:right;'>
+
+    <li class="nav-item active">
+      <a class="blog_link" href="#" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+    </li>
+
+    </ul>
+    <form class="form-inline" style='margin-right:1%;margin-top:1%;' method='POST' action=''>
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" name='search_gitmeet'>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='border-radius:6px;border-width:1.6px;color:white;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>Search</button>
+  </form>
+</nav>
+  <body>
+    <nav aria-label="breadcrumb" style='background-color:white;'>
+      <ol class="breadcrumb" style='font-size:20px;background-color:white;'>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">About</li>
+      </ol>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-auto">
+          <div class="card" style="width: 18rem;border-top:none;border-top-left-radius:10px;border-top-right-radius:10px;margin-right:-10px;">
+            <div class="card-header" style='text-align:center;background-color:#F2B23A;color:white;border-style:solid;border-color:#F2B23A;border-top-left-radius:6px;border-top-right-radius:6px;border-right:none;border-left:none;'>
+            Administration
+            </div>
+            <ul class="list-group list-group-flush" style='text-align:center;'>
+              <li class="list-group-item">
+
+                <a href='/report_issues'>Contact</a>
+              </li>
+              <li class="list-group-item">
+
+                <a href='/settings'>Settings</a>
+              </li>
+              <li class="list-group-item">
+
+                <a href='/features'>Features</a>
+              </li>
+              <li class="list-group-item">
+
+                <a href='/terms_and_conditions'>Terms of Service</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          <div class="alert alert-danger" role="alert">
+            For information regarding GitMeet features or for help, please click <a href="/features" class="alert-link">here</a>
+          </div>
+          <div class="jumbotron" style='text-align:left;background-color:#F0EFEF'>
+            <h1 class="display-6">GitMeet</h1>
+            <p class="lead">GitMeet is an platform enabling project creators to better attract and retain repository contributors. GitMeet provides options to invite developers, award contributions, and expand a project's talent base.</p>
+
+            <h1 class="display-6">Goals</h1>
+            <ul>
+              <li>Increase the amount of beneficial project contributions</li>
+              <li>Retain contributors throughout project development</li>
+              <li>Better organize, categorize, tag, and manage project issue and job postings</li>
+            </ul>
+
+            <h1 class="display-6">For Project Creators</h1>
+            <p class="lead">GitMeet provides project creators simple, powerful tools to better manage project issue and job postings, along with user join requests.</p>
+            <div class="alert alert-danger" role="alert">
+              For specifics, please click <a href="/features" class="alert-link">here</a>
+            </div>
+            <h1 class="display-6">For Project Teammembers</h1>
+            <p class="lead">GitMeet enables users to customize a profile of their developer summary and include a tag listing of the technologies they wish to work with on a project.</p>
+            <div class="alert alert-danger" role="alert">
+              For specifics, please click <a href="/features" class="alert-link">here</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+</html>

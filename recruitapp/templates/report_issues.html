@@ -1,0 +1,149 @@
+<html>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+    body{
+      font-family: 'Actor', sans-serif;
+      font-family: 'Asap', sans-serif;
+
+    }
+    #main_content{
+
+      height:100%;
+      width:100%;
+    }
+    .send_message{
+      width:auto;
+      height:auto;
+      background-color: #B24AFF;
+      text-decoration: none;
+      color:white;
+      font-family: 'Actor', sans-serif;
+      font-family: 'Asap', sans-serif;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 6px;
+      padding-left: 23px;
+      padding-right: 23px;
+      padding-top: 13px;
+      padding-bottom: 13px;
+      border:none;
+
+    }
+    .send_message:hover{
+      width:auto;
+      height:auto;
+      background-color: #8B28D5;
+      transition: all .15s ease-in-out;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    </head>
+    <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
+
+
+      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+
+      <form class="form-inline">
+
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='color:white;'>Search</button>
+      </form>
+
+    </nav>
+    <div id='main_content'>
+    <nav aria-label="breadcrumb" style='width:60%;' class='navbar'>
+      <ol class="breadcrumb" style='background-color:white;'>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Report issue</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-sm-auto"> <!--col-md-auto-->
+        <ul class="list-group" style='text-align:center;margin-left:30px;width:130%;'>
+          <li class="list-group-item active" style='background-color:#F2B23A;border:none;'>Administration</li>
+          <li class="list-group-item"><a href='/about'>About</a></li>
+          <li class="list-group-item"><a href='/settings'>Settings</a></li>
+          <li class="list-group-item"><a href='/features'>Features</a></li>
+          <li class="list-group-item"><a href='/terms_of_service'>Terms of service</a></li>
+        </ul>
+      </div>
+      <div class="col-md-auto">
+        <div class="alert alert-primary" role="alert" style='font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;text-align:center;width:70%;margin:0 auto;'>
+          <h4 class="alert-heading">For Bugs or Technical issues encountered on GitMeet</h4>
+            <hr>
+          <p class="mb-0">Please submit at issue report on our <a href="http://www.github.com" class="alert-link">Github page</a></p>
+        </div>
+        <div class="alert alert-secondary" role="alert" style='margin:0 auto;margin-top:20px;text-decoration:none;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;width:70%;'>
+          <p class="card-text" style='font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>Thank you for your interest in GitMeet. We would like to hear your feedback! We will respond within one business day</p>
+
+        </div>
+      </div>
+      <div class="col-sm">
+
+      </div>
+    </div>
+
+
+
+
+    <div class='spacer' style='height:30px;'></div>
+    <form action='' method='POST' style='width:45%;margin:0 auto;'>
+      <div class="form-group">
+        <label for="email">Your email</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" name='email' required>
+        <div class="invalid-feedback">Email cannot be left blank</div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject of message</label>
+        <input type="subject" class="form-control" id="subject" name='subject' required>
+        <div class="invalid-feedback">Subject cannot be left blank</div>
+      </div>
+      <div class="form-group">
+        <label for="name">Your name</label>
+        <input type="subject" class="form-control" id="name" name='name' required>
+        <div class="invalid-feedback">Name cannot be left blank</div>
+      </div>
+      <div class='spacing'>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="4" name='message' required></textarea>
+        <div class="invalid-feedback">Subject cannot be left blank</div>
+      </div>
+      <button type="submit" class="send_message">Send Message</button>
+
+    </form>
+    </div>
+  </div>
+  <script>
+  {%if confirmation_message%}
+
+  var delay = 600;
+         setTimeout(function() {
+           $.bootstrapGrowl("{{confirmation_message}} Redirecting...",{
+               type: "success",
+               delay: 4000,
+               width: 450,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+
+         var new_delay = 4000;
+          setTimeout(function() {
+
+                window.location.replace('/');
+        }, new_delay)
+
+    {%endif%}
+  </script>
+  </body>
+</html>

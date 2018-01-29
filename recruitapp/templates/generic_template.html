@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+
+    html, body {
+      margin: 0;
+      padding: 0;
+
+    }
+
+
+  .flag{
+    background-image: url('/static/images/{{name}}.png');
+    background-repeat: no-repeat;
+    background-size: 50px 30px;
+    width: 50px;
+    height:30px;
+
+
+
+  }
+
+  #top_bar{
+    height:15%;
+    width:100%;
+
+  }
+  #top_bar .add_user{
+    border-radius:3px #F0AB33;
+    float:left;
+    margin-top: 2%;
+    margin-left: 5%;
+    text-decoration: none;
+    border-radius: 20px;
+    height:auto;
+    width:auto;
+    /*
+    background-color: #2EDD7E;
+    */
+      background-color: #F0AB33;
+
+    color:white;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 11px;
+    padding-bottom:11px;
+    font-size:20px;
+
+  }
+  #top_bar .add_user:hover{
+    border-radius: 3px #10BC5F;
+    background-color: #10BC5F;
+    transition: all .15s ease-in-out;
+  }
+  #bar1{
+    height:40%;
+    width:100%;
+
+
+  }
+  #bar1 .profile_photo{
+    width:180px;
+    height:180px;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+    border-bottom-left-radius:4%;
+    border-bottom-right-radius:4%;
+    margin:0 auto;
+    background-size: 180px;
+
+  }
+  #bar1 .github_home_page{
+      height:6%;
+      width:10%;
+      position: relative;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      color:black;
+      font-family: 'Actor', sans-serif;
+      font-family: 'Asap', sans-serif;
+      text-decoration: none;
+  }
+  #bar1 .github{
+    text-align:center;
+  }
+  #bar1 .username .user{
+    text-align: center;
+    color:black;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size: 40px;
+  }
+  .user_email .mail_sign{
+    color:black;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    text-decoration: none;
+  }
+  .user_email{
+    text-align: center;
+  }
+  #top_bar .profile_card{
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    text-align: center;
+    float:right;
+    margin-top:1%;
+    width:20%;
+    height:80px;
+    background-color: white;
+  }
+  #top_bar .profile_photo1{
+
+    margin-right: -18%;
+    float:right;
+    width:6%;
+    height:80px;
+    margin-top: 1%;
+    border-radius: 50%;
+    background-color: grey;
+    border-style:solid;
+    border-color: blue;
+    border-width: 6px;
+    border-color: #E2E5E4;
+    background-size: 70px;
+
+
+  }
+  #top_bar .profile_card .view_visitor{
+    position: relative;
+    top:30%;
+    float:right;
+    margin: 0 auto;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    color:black
+  }
+  .user_summary{
+    text-align: center;
+  }
+  .user_summary .summary{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:black;
+    font-size: 18px;
+  }
+  #top_bar .signout{
+    float:left;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    background-color: #8B28D5;
+    color:white;
+    text-decoration: none;
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    padding-left: 2%;
+    padding-right:2%;
+    padding-top:5px;
+    padding-bottom: 5px;
+
+
+  }
+  #top_bar .notifications{
+    float:right;
+    background-color: red;
+    width:5%;
+    height:58%;
+    border-radius: 50%;
+    margin-right: 5%;
+    margin-top: 2%;
+
+  }
+  .badge1 {
+   position:relative;
+   float:right;
+   margin-right:10%;
+   margin-top: 2%;
+   width:58px;
+   height:58px;
+  border-radius: 50%;
+  text-decoration: none;
+   cursor: pointer;
+   border:3px; white;
+}
+.badge1[data-badge]:after {
+
+
+   content:attr(data-badge);
+   position:absolute;
+   float:right;
+   top:-4px;
+   right:-4px;
+   font-size:.7em;
+   background:green;
+   color:white;
+   width:18px;height:18px;
+   text-align:center;
+   line-height:18px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+   font-family: 'Actor', sans-serif;
+   font-family: 'Asap', sans-serif;
+
+}
+#top_bar .user_menu{
+  float:right;
+  margin-right:1%;
+  margin-top: 2.5%;
+}
+.dropdown {
+  float:right;
+  margin-top: 2%;
+  margin-right: 5%;
+
+
+}
+
+.dropdown-content {
+    position: absolute;
+    margin-top: 60px;
+    margin-right: -500px;
+    display: none;
+
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+.message_text{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  position: relative;
+  padding-bottom: 8px;
+  font-size: 20px;
+}
+#top_bar1 .my_dropdown{
+  margin-top: 1%;
+  float:right;
+}
+#top_bar1 .my_dropdown .new_button1{
+
+  border-radius: 6px;
+  border:3px white;
+  float:right;
+  margin-top: -10px;
+  margin-right: 20px;
+  background-color:none;
+}
+#top_bar .my_dropdown .notification_widget{
+  margin-right: 4%;
+  color:white;
+}
+
+#top_bar .my_dropdown .badge badge-primary badge-pill{
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+
+}
+#bar_3{
+  height:100%;
+  width:100%;
+}
+#bar_3 .user_ops{
+  width:500px;
+  height:400px;
+  margin:0 auto;
+}
+#bottom_bar{
+
+
+}
+
+.create_project_button{
+  background-color: #F0AB33;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:white;
+  font-size: 15px;
+  border: 3px white;
+  border-radius: 6px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /*background-color: #C38720;*/
+}
+.create_project_button:hover{
+  background-color: #C38720;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:white;
+  font-size: 15px;
+  border: 3px white;
+  border-radius: 6px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /*background-color: #C38720;*/
+}
+.import_project{
+  background-color: black;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 6px;
+  margin-top: : 50%;
+  text-decoration: none;
+  font-size: 15px;
+  color:white;
+  border: 3px white;
+}
+.project_box{
+  height:50%;
+}
+.project_box .project_name_listing{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 28px;
+  padding-left: 2%;
+
+}
+/*----------------*/
+#top_bar1{
+  height:50px;
+  width:100%;
+  background: linear-gradient(to right, #9B42D9 , #F0AB33);
+}
+
+#top_bar1 .site_name1{
+  position: relative;
+  float:left;
+  margin-left: 1%;
+  padding-top: 0.4%;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#B4B4B1;
+  font-size: 20px;
+}
+#top_bar1 .profile_photo11{
+  background-size: 35px;
+  width:35px;
+  height:35px;
+
+
+
+}
+.input_button1{
+  border: 3px white;
+  background-color: #10BC5F;
+  border-radius: 5px;
+  height:35px;
+  margin-top: 1.4%;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+.input_button1:hover{
+  background-color: #2D9E50;
+  transition: all .15s ease-in-out;
+
+}
+/*----------------*/
+</style>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+  <body>
+
+<!---------->
+<div id='top_bar1'>
+ <a href="/"><p1 class='site_name1'>GitMeet</p1></a>
+  {%if view_avatar%}
+
+<div class="btn-group" style='float:right;margin-right:1%;margin-top:0.4%;'>
+  <button type="button" class="btn btn-my_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='border-radius:3px;background-image:url({{view_avatar}});background-repeat: no-repeat;background-size:40px;height:40px;width:40px;border:2px white;'>
+
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" style='text-align:center;'>
+
+    <strong>{{visitor}}</strong>
+    <p>@{{visitor}}</p>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="#">Settings</a>
+    <a class="dropdown-item" href="#">Help</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href='/signout'>Sign Out</a>
+    </div>
+  </div>
+  {%endif%}
+
+  <form class="form-inline" action="" style='float:right;'>
+    <input class="form-control" type="text" placeholder="Search" style='margin-top:1.4%;height:36px;'>
+
+    <button class="input_button1" type="submit">Search</button>
+    <div class='spacer' style='width:10px;'></div>
+    {%if username == visitor%}
+
+    <div class="spacing" style='width:10px;'></div>
+  <form class="form-inline">
+
+    <div class="my_dropdown">
+      <!--
+      <div class='notification_widget' style='background-color:green;border-radius:50%;width:24%;height:40px;float:right;text-align:center;'>
+        <p style='padding-top:10px;'>16</p>
+      </div>
+    -->
+      <button type="button" class="new_button1" data-toggle="dropdown"  style='margin-top: 0.3%;'>
+        <i class="fa fa-bell" aria-hidden="true" style="font-size: 1.4em;padding-left:3px;padding-top:7px;padding-bottom:5px;">
+          <span class='message_text'></span>
+          <span class="badge badge-primary badge-pill" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;">14</span>
+        </i>
+
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Clear All</a>
+
+      </div>
+    </div>
+  </div>
+  </form>
+
+
+    {%endif%}
+  </form>
+
+</div>
+
+  </body>
+
+</html>

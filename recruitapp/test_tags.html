@@ -1,0 +1,365 @@
+<html>
+  <style>
+  /* addins */
+%clearfix {
+&:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+}
+
+/* taggle defaults */
+$taggle-project_color: #990033;
+
+@keyframes bounce {
+
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+
+
+  40% {
+      transform: translateY(-16px);
+  }
+
+
+  60% {
+      transform: translateY(-7px);
+  }
+}
+
+.bounce {
+  animation-name: bounce;
+}
+
+// plugin specific styles
+
+.project_container a {
+  color: #000;
+}
+
+.clearfix:before, .clearfix:after {
+  display: block;
+  content: "";
+  line-height: 0;
+  clear: both;
+}
+
+.taggle_list {
+  float: left;
+  width: 100%;
+  margin: 0;
+}
+
+.taggle_input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.taggle_list li {
+margin-bottom: 0;
+display: inline-block;
+}
+
+.taggle_list .taggle {
+  float: left;
+  white-space: nowrap;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.taggle_list .taggle {
+  margin-right: 8px;
+  background: #E2E1DF;
+  padding: 5px 10px;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.taggle_list .taggle_hot {
+  background: #cac8c4;
+}
+
+.taggle_list .taggle .close {
+  font-size: 1.1rem;
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  text-decoration: none;
+  padding-left: 2px;
+  padding-top: 3px;
+  line-height: 0.5;
+  color: #ccc;
+  color: rgba(0, 0, 0, 0.2);
+  padding-bottom: 4px;
+  display: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.taggle_list .taggle:hover {
+  padding: 5px;
+  padding-right: 15px;
+  background: #ccc;
+  transition: all .3s;
+}
+
+.taggle_list .taggle:hover > .close {
+  display: block;
+}
+
+.taggle_list .taggle .close:hover {
+  color: $taggle-project_color;
+}
+
+.taggle_placeholder {
+  position: absolute;
+  color: #CCC;
+  top: 12px;
+  left: 8px;
+  transition: opacity, .25s;
+  user-select: none;
+}
+
+.taggle_input {
+  padding: 8px;
+  padding-left: 0;
+  float: left;
+  margin-top: -5px;
+  background: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+.taggle_sizer {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: -500px;
+  z-index: -1;
+  visibility: hidden;
+}
+
+/* custom styles */
+h1 {
+font-size: 22px
+}
+
+a {
+color: #1f9fd6;
+text-decoration: none;
+}
+
+.form-group {
+width: 90%;
+margin: 40px auto;
+max-width: 400px;
+position: relative;
+}
+
+.control-label {
+font-size: 12px;
+font-weight: 700;
+display: block;
+margin-bottom: 2px;
+}
+
+.tag-container {
+  @extend %clearfix;
+  padding: 4px 4px 0;
+  background: #e3e3e3;
+  border-radius: 0;
+  border-bottom: 2px solid #a7a7a7;
+  margin-bottom: -8px;
+  font-size: 16px;
+  line-height: 1;
+  transition: border-color .2s ease-in-out;
+  height: auto;
+
+  input[type="text"] {
+      background-color: transparent;
+      border: none;
+  }
+
+  .twitter-typeahead {
+      position: static !important;
+  }
+
+  .tt-menu {
+      background: #fff;
+      font-size: 14px;
+      box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .15);
+      right: 0;
+
+      .tt-suggestion {
+          padding: 4px 8px;
+      }
+
+      .tt-highlight {
+          color: #1f9fd6;
+      }
+
+      .tt-cursor {
+          background: #1f9fd6;
+          color: #fff;
+
+          .tt-highlight {
+              color: #fff;
+          }
+      }
+  }
+
+  .tt-hint {
+      display: none;
+  }
+}
+
+.tag-data {
+  display: none;
+}
+
+.taggle_list {
+  padding: 0;
+
+  .taggle {
+      background: #1f9fd6;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 3px;
+      padding: 4px 16px 4px 8px;
+      margin: 0 2px 2px 0;
+
+      .close {
+              font-size: .9rem;
+              position: absolute;
+              top: 3px;
+              right: -3px;
+              color: #fff;
+              display: block;
+      }
+
+      &:hover {
+          background: #1079A6;
+          padding: 4px 16px 4px 8px;
+
+          .close {
+              color: #fff;
+          }
+      }
+  }
+}
+
+[type="text"] {
+display: block;
+width: auto !important;
+padding: 8px 8px 4px;
+font-size: 14px;
+line-height: 1;
+height: 14px;
+outline: none;
+
+&::selection {
+  background: #1f9fd6;
+  color: #fff;
+}
+
+}
+  </style>
+  <body>
+    <div class="form-group">
+      <h1>Tag list using Sean Coker’s <a href="https://sean.is/poppin/tags" target="_blank">taggle.js</a> and Twitter’s <a href="https://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></h1>
+
+      <label class="control-label" for="tags[]">Enter One or More Fruits (comma separated)</label>
+
+      <div id="tags" class="tag-container"></div>
+
+      <div id="tag-data" class="tag-data">Kiwi,Lemon</div>
+
+      <div id="available-tag-data" class="tag-data">Apple, Banana, Cherry, Strawberry, Raspberries, Blueberry, Orange, Pineapple, Grape, Blackberry, Grapefruit, Kiwi, Lemon</div>
+    </div>
+
+  </body>
+
+
+
+
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+function parseTags(id) {
+    var setTags = $('#' + id).text();
+    setTags = setTags.replace(/\s\s+/g, '');
+
+    if(!setTags.length) {
+        return [];
+    }
+
+    setTags = setTags.replace(/(^\s*)|(,\s*$)/g, '');
+    setTags = setTags.split(',');
+    return setTags;
+}
+
+$(document).ready(function(){
+    if(document.getElementById('tags')) {
+        new Taggle('tags', {
+            hiddenInputName: 'tags[]',
+            placeholder: '',
+            tags: parseTags('tag-data'),
+            duplicateTagClass: 'bounce',
+            onTagAdd: function() {
+                $(this).val('');
+                $('.tt-suggestion').remove();
+            }
+        });
+
+        $('#tags .taggle_input').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: 'tags',
+          source: substringMatcher(parseTags('available-tag-data'))
+        });
+    }
+
+    $('.taggle_input').on('blur', function() {
+        $(this).val('');
+        $('.tt-suggestion').remove();
+    });
+
+  $('.tt-input').first().focus();
+});
+</script>
+
+
+
+</html>

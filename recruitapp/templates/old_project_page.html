@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+
+    html, body {
+      margin: 0;
+
+
+    }
+#top_bar{
+  height:45px;
+  width:100%;
+  background: linear-gradient(to right, #9B42D9 , #F0AB33);
+}
+
+#top_bar .site_name{
+  position: relative;
+  float:left;
+  margin-left: 1%;
+  padding-top: 0.4%;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#B4B4B1;
+  font-size: 20px;
+}
+#top_bar .profile_photo1{
+  background-size: 31px;
+  float:right;
+  width:30px;
+  height:30px;
+  margin-top:0.4%;
+  margin-right: 2%;
+  border-radius:2px;
+
+}
+.input_button{
+  border: 3px white;
+  background-color: #10BC5F;
+  border-radius: 5px;
+  height:35px;
+  margin-top: 1.4%;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+.input_button:hover{
+  background-color: #2D9E50;
+  transition: all .15s ease-in-out;
+
+}
+#project_bar{
+  margin-top: 5%;
+  height:50%;
+}
+#project_bar .project{
+  margin:0 auto;
+  height:50%;
+  width:50%;
+  text-align: center;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+
+
+}
+#project_bar .project .title{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-style: solid;
+    border-width: 2px;
+  border-color: gray;
+}
+.disable_join_requests{
+  width:170px;
+  height:30px;
+  border-radius: 5px;
+  background-color: #E5AB11;
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 7px;
+
+  padding-bottom: 30px;
+  color:white;
+
+}
+.disable_join_requests:hover{
+  color:white;
+  background-color: #CF9B0E;
+}
+.delete_project{
+  width:170px;
+  height:30px;
+  border-radius: 5px;
+  background-color: #DA380D;
+  text-align: center;
+  padding-left: -1px;
+  padding-top: 7px;
+  padding-bottom: 30px;
+  padding-right: -1px;
+  color:white;
+}
+.delete_project:hover{
+  color:white;
+  background-color: #C41301;
+}
+
+}
+.input-group-addon:hover{
+  background-color: #E6E6E6;
+
+}
+.no_jobs{
+  font-size: 20px;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+</style>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+
+--->
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
+
+
+      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+
+      <form class="form-inline">
+
+        {%if visitor%}
+
+      <div class="btn-group" style='margin-right:20px;'>
+        <button type="button" class="btn btn-my_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='border-radius:3px;background-image:url({{view_avatar}});background-repeat: no-repeat;background-size:48px;height:48px;width:48px;border:2px white;float:right;'>
+
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" style='text-align:center;'>
+
+          <strong>{{visitor}}</strong>
+          <p>@{{visitor}}</p>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/{{visitor}}">Profile</a>
+          <a class="dropdown-item" href="/settings">Settings</a>
+          <a class="dropdown-item" href="#">Help</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href='/signout'>Sign Out</a>
+          </div>
+        </div>
+
+        {%endif%}
+        {%if visitor%}
+          <span class="badge badge-pill badge-primary" style='font-size:20px;margin-right:15px;'>{{visitor_reputation}}</span>
+
+        {%endif%}
+        {%if visitor%}
+        <div class="btn-group" style='margin-right:20px;'>
+          <button type="button" class="btn btn-my_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='float:right;border-radius:6px;height:40px;'>
+            <i class="fa fa-bell" aria-hidden="true" style="font-size: 1.4em;padding-left:3px;padding-top:2px;padding-bottom:5px;">
+              <span class='message_text'></span>
+              <span class="badge badge-primary badge-pill" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;">14</span>
+            </i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" style='text-align:center;width: 300px !important;'>
+
+            <!--<div class="dropdown-divider"></div>-->
+            <!--
+            Here, will probabily have to trigger popup with user developer report
+            Instead of full request, just say "New Request from {{username}}"
+            -->
+            <a href='/request/project/user' style='text-decoration:none;color:black'>New request from <strong>Taekwondo15</strong></a>
+            <div class="dropdown-divider"></div>
+
+
+
+            <p>New developer recommendation:<a href='#' style='text-decoration:none;color:black' data-toggle="modal" data-target="#exampleModalCenter"><strong>Taekwondo15</strong></a></p>
+            <div class="dropdown-divider"></div>
+            <a href='/clear_all_notifications' style='text-decoration:none;color:black'><strong>Clear All</strong></a>
+            </div>
+          </div>
+
+      {%endif%}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </nav>
+  <!--
+    <div id='project_bar'>
+      <div class="project">
+        <div class='title'>
+          <h1>Project title</h1>
+        </div>
+      </div>
+    </div>
+  -->
+  <div class='spacer' style='height:50px;'></div>
+  <div class="card" style='width:50%;margin:0 auto;text-align:center;border-top-left-radius:20px;border-top-right-radius:20px;'>
+    <h4 class="card-header" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;font-size:30px;background-color:#CCCACE;border-top-left-radius:20px;border-top-right-radius:20px;"><strong>{{projectname}}</strong></h4>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;">
+
+      <i class="fa fa-github" style="font-size: 2.4em;padding-left:10px;"></i>
+      <a href="https://github.com/{{owner}}/{{projectname}}" style='font-size:18px;'>{{owner}}/{{projectname}}</a>
+
+      {%if gitter_link%}
+        <i class="fa fa-gitter" style="font-size: 2.4em;padding-left:10px;"></i>
+        <a href="{{gitter_link}}" style='font-size:18px;'>{{projectname}}/Lobby</a>
+
+      {%endif%}
+
+      {%if gitlab_link%}
+        <i class="fa fa-gitlab" style="font-size: 2.4em;padding-left:10px;"></i>
+        <a href="{{gitlab_link}}" style='font-size:18px;'>{{projectname}} on Gitlab</a>
+      {%endif%}
+      <div class="spacer" style='height:10px;'></div>
+
+      <button class='team_members' style='width:100px;height:40px;'>Team</button>
+      </li>
+
+
+
+    </ul>
+    <div class="card-body">
+
+      <p class="card-text" style="font-family: 'Actor', sans-serif;font-family: 'Asap', sans-serif;font-size:19px;">{{description}}</p>
+      {%if project_tags%}
+        <ul class='nav justify-content-center'>
+          {%for tag in project_tags%}
+            <li class='nav-item'>
+              <span class="badge badge-primary">{{tag}}</span>
+
+            </li>
+            <div class='spacing_for_tags' style='width:10px;'></div>
+          {%endfor%}
+        </ul>
+        <div class='new_space' style='height:20px;'></div>
+      {%endif%}
+      {%if visitor == owner%}
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_project">Project settings</button>
+      <div class="modal fade" id="update_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Project Settings</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style='text-align:left;'>
+              <form method='POST' action='' id="needs-validation" novalidate>
+                <div class="form-row align-items-center">
+                  <div class='col'>
+                    <label for="projectname" class="mr-sm-2">Project Name</label>
+                    <input class="form-control" id='projectname' type="text" placeholder="{{projectname}}" readonly>
+                  </div>
+                  <div class='col'>
+                    <label for="project_id" class="mr-sm-2">Project Id</label>
+                    <input class="form-control" id='project_id' type="text" placeholder="{{id}}" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="new_description" class="col-form-label">Description</label>
+                  <textarea class="form-control" id="new_description" name='new_description' required>{{description}}</textarea>
+                  <div class="invalid-feedback">
+                    Cannot be left blank
+                  </div>
+                  <div class='spacer1' style='height:20px;'></div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fab fa-gitter" style='padding-right:6px;font-size: 1.5em;'></i>Gitter link</span>
+                    <input type="text" class="form-control" aria-label="Project link" aria-describedby="basic-addon1" name='gitter_link'>
+                  </div>
+                  <div class='spacer1' style='height:20px;'></div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fab fa-gitlab" aria-hidden="true" style='padding-right:6px;font-size: 1.5em;'></i> Gitlab link</span>
+                    <input type="text" class="form-control" aria-label="Project link" aria-describedby="basic-addon1" name='gitlab_link'>
+                  </div>
+                  <div class='spacer' style='height:15px;'></div>
+                  <label for="tags">Project Tags</label>
+                  <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scaping,Multi-Processing">
+                  <small id="tag_instructions" class="form-text text-muted">
+                    Enter project tags separated by commas
+                  </small>
+                  <div class='spacer' style='height:15px;'></div>
+                  <div id="advanced" data-children=".item">
+                     <div class="item">
+                       <a data-toggle="collapse" data-parent="#advanced" href="#advanced_actions" aria-expanded="true" aria-controls="advanced_actions">
+                         Advanced
+                       </a>
+                       <div id="advanced_actions" class="collapse" role="tabpanel">
+                         <div class='actions'>
+                         <nav class="navbar navbar-light bg-light1" style='background-color:#F6F5F5;'>
+                           {%if not disable_join%}
+                           <a href = '/disable_join/{{projectname}}' class='disable_join_requests' style='text-decoration:none;'>Disable join requests</a>
+
+
+                           <div class="alert alert-warning" role="alert">
+                             Disabling requests will remove all job listings, but keep the current team
+                           </div>
+                           {%else%}
+                           <a href='/enable_join/{{projectname}}' class='disable_join_requests' style='text-decoration:none;'> Enable join requests</a>
+                           <div class="alert alert-info" role="alert">
+                             Enabling join requests will allow for the posting and viewing of project jobs
+                           </div>
+                           {%endif%}
+                         </nav>
+                       </div>
+                       <div class='spacer' style='height:20px;'></div>
+                       <div class='new_actions'>
+                         <nav class="navbar navbar-light bg-light1" style='background-color:#F6F5F5;'>
+                           <a href='/delete/{{projectname}}' class='delete_project' style='text-decoration:none'>Delete project</a>
+                           <hr>
+                           <div class="alert alert-danger" role="alert">
+                             <strong>Project deletion is permenant and will remove all users and job data associated with it</strong>
+                           </div>
+                         </nav>
+                       </div>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class='button_spacer' style='width:2px;background-color:gray'></div>
+      <button type="button" class="btn btn-primary">Manage Team</button>
+    </div>
+      {%elif visitor != None%}
+        <a href="#" class="btn btn-primary">Send join request</a>
+      {%endif%}
+
+    </div>
+
+  </div>
+  <div class='spacer3' style='height:40px;'></div>
+  {%if not disable_join%}
+  <div class='card text-center' style='width:60%;margin:0 auto;'>
+    <div class='card-header'>
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="">Jobs
+          <span class="badge badge-light" style='background-color:gray;'>{{jobs.length}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          {%if visitor == owner%}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_Job" style='margin-left:10px;'>
+              Add Job
+            </button>
+          {%endif%}
+
+
+           <!-- Modal -->
+           <div class="modal fade" id="create_Job" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style='text-align:left;'>
+             <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Create Job</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <div class="modal-body">
+                   <form method='POST' action="" id="needs-validation">
+                     <div class="form-group">
+                       <label for="title">Job title</label>
+                       <div class='break_line' style='width:5px;'></div>
+                       <input type="title" class="form-control" id="title" aria-describedby="emailHelp" name='job_title' required>
+                       <div class="invalid-feedback">
+                         Title of job cannot be left blank
+                       </div>
+                       <div class='break_line' style='width:5px;'></div>
+                       <div class='spacer' style='height:20px;'></div>
+                       <label for="description">Job description</label>
+                       <textarea class="form-control" id="description" rows="3" name='job_description' aria-describedby="instructions" required></textarea>
+                       <small id="instructions" class="form-text text-muted">
+                         Add revelent duties
+                       </small>
+                     </div>
+                     <div class="invalid-feedback">
+                       Description of job cannot be left blank
+                     </div>
+                     <label for="tags">Tags</label>
+                     <input type="text" class="form-control" id="tags" aria-describedby="emailHelp" name='job_tags' data-toggle="tooltip" title="add technologies needed, urgency level, or developer level" placeholder='i.e Bug-Fix,Beginner,Python,help wanted' required>
+                     <small id="instructions" class="form-text text-muted">
+                       add tags separated by a comma
+                     </small>
+                     <div class='spacer20' style='height:10px;'></div>
+                     {%if bugs%}
+                     <label for='issue_list'>Assign Issue</label>
+
+                      <select class="custom-select" id='issue_list' name='bug_listing'>
+                        <option selected>Select issue</option>
+                        {%for url, title in bugs%}
+                          <option>{{url}}</option>
+
+                        {%endfor%}
+                      </select>
+
+                      <div class="alert alert-info" role="alert">
+                        Assigning project issues helps organize and delegate tasks
+                      </div>
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Tip: use issue listings as todo lists for clarity
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    {%endif%}
+
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <button type="submit" class="btn btn-primary">Create</button>
+                     </div>
+
+                   </form>
+                 </div>
+
+
+               </div>
+             </div>
+           </div>
+        </li>
+
+
+
+      </ul>
+    </div>
+    <div class="card-body">
+      {%if not jobs%}
+        <i class='no_jobs'>No jobs posted</i>
+      {%else%}
+      {%for job in jobs%}
+      <div class="card text-center">
+        <div class="card-header">
+          <strong>{{job.title}}</strong>
+        </div>
+        <div class="card-body">
+
+          <p class="card-text" style='font-size:20px;'>{{job.description}}</p>
+          <div class="card border-primary mb-3" style="max-width: 40rem;margin:0 auto;">
+            <div class="card-header">Specific Bugs to Solve</div>
+            <div class="card-body text-primary">
+
+              <p class="card-text">{{job.bugs}}</p>
+            </div>
+          </div>
+          {%for tagname, color in job.tags%}
+            <span class="badge badge-primary" style='margin-right:10px;background-color:{{color}}'>{{tagname}}</span>
+          {%endfor%}
+
+        </div>
+        <div class="card-footer text-muted">
+          {%if owner == visitor%}
+            <a href='{{projectname}}/remove_job/{{job.id}}' class='delete_job'>Delete job</a>
+          {%else%}
+            <a href='{{projectname}}/send_request/{{job.id}}' class='send_job_request'>Request Access</a>
+          {%endif%}
+
+        </div>
+      </div>
+      <div class='extra_spacing' style='height:40px;'>
+
+      </div>
+      {%endfor%}
+      {%endif%}
+
+    </div>
+  </div>
+  {%endif%}
+  </body>
+  <script>
+  {%if new_rep.rep > 0%}
+  var delay = 2000;
+         setTimeout(function() {
+           $.bootstrapGrowl('You earned {{new_rep.rep}} repution!',{
+               type: 'success',
+               delay: 4000,
+               width: 340,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+  {%endif%}
+  {%if tips%}
+  var delay = 1000;
+         setTimeout(function() {
+           $.bootstrapGrowl('{{tips}}',{
+               type: 'success',
+               delay: 4000,
+               width: 450,
+               offset: {from: 'top', amount: 80},
+           });
+         }, delay)
+  {%endif%}
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+
+  window.addEventListener('load', function() {
+    var form = document.getElementById("needs-validation");
+    form.addEventListener('submit', function(event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  }, false);
+})();
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$('input[type=text][name=job_tags]').tooltip({ /*or use any other selector, class, ID*/
+    placement: "top",
+    trigger: "focus"
+});
+
+
+;
+
+
+</script>
+</html>
