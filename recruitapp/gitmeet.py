@@ -29,8 +29,6 @@ import dev_recogs
 import top_projects as top_project
 #BUG:for bonus awards may have to update rep in repdb, and then display two messages: one for the rep increase (success), and another for the project name (info)
 app = flask.Flask(__name__)
-app.config['GITHUB_CLIENT_ID'] = 'a8e5adeb6fc1e2251296'
-app.config['GITHUB_CLIENT_SECRET'] = '50ff3e87e898db806952d54a20038766ded1cae4'
 github = GitHub(app)
 userdb = tigerSqlite.Sqlite('userprofiles.db')
 repdb = tigerSqlite.Sqlite('user_rep.db')
@@ -1028,33 +1026,6 @@ def award_bonus(projectname, user_name, job_id):
 
 
 
-@app.route('/login')
-def login():
-
-    if user.username: #will later redirect to home project page
-        return flask.redirect('/')
-    return github.authorize(scope="user:email")
-
-@app.route('/settings', methods=['GET', 'POST'])
-@check_if_authorized
-def settings():
-
-    #username text, name text, avatar text, email text, summary text, id int, extra text
-    #['username', 'name', 'avatar', 'email', 'summary', 'id', 'extra']
-    extras = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][-1]
-    user_data = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
-    print "extras in settings", extras
-    original_rep = extras[-1]['rep']
-    headers = gitmeet_user.User.get_headers()
-    current_data = {a:b for a, b in zip(headers, user_data)}
-    if flask.request.method == "POST":
-        new_data = flask.request.form
-        current_data = {a:new_data.get(a, b) if a != "extra" else dict([(i, flask.request.form.getlist(i)) if i != 'tags' else (i, re.split(',\s*', new_data.get('tags', ''))) for i in ['tags', 'recieve_invites', 'display_email']]+[('rep', original_rep)]) for a, b in current_data.items()}
-        print "should be getting this", [(i, current_data[i]) for i in headers]
-        global userdb
-        userdb.update('users', [(i, current_data[i]) for i in headers], [('username', user.username)])
-        return flask.redirect('/{}'.format(user.username))
-    return flask.render_template('settings.html', visitor = user.username, username=user.username, view_avatar=user.avatar, user_id=user_data[5], user_email = user.email if user.email else '', user_tags = '' if user_data[-1] is None else ','.join(user_data[-1].get('tags', '')), user_bio=user_data[-3], regular_tags = '' if not user_data[-1].get('tags', '') else list(zip(user_data[-1].get('tags', ''), ['green', 'red', 'blue', '#EFE630', '#E10D87', '#11E3D3', '#E49434'])), joined=[], job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
 
 @app.route('/signout')
 def signout():
