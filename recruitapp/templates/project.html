@@ -643,7 +643,7 @@
                     <div class='spacer' style='height:15px;'></div>
                     <div id="advanced" data-children=".item">
                        <div class="item">
-                         <a data-toggle="collapse" data-parent="#advanced" href="#advanced_actions" aria-expanded="true" aria-controls="advanced_actions" class='advanced_actions' style='text-decoration:none;color:white;'>
+                         <a data-toggle="collapse" data-parent="#advanced" href="#advanced_actions" aria-expanded="true" aria-controls="advanced_actions" class='btn btn-warning' style='text-decoration:none;color:white;'>
                            Advanced
                          </a>
                          <div id="advanced_actions" class="collapse" role="tabpanel">
@@ -651,7 +651,7 @@
                            <div class='actions'>
                            <nav class="navbar navbar-light bg-light1" style='background-color:#F6F5F5;'>
                              {%if not disable_join%}
-                             <a href = '/disable_join/{{projectname}}' class='disable_join_requests' style='text-decoration:none;'>Disable requests</a>
+                             <a href = '/disable_join/{{projectname}}' class='btn btn-danger' style='text-decoration:none;'>Disable requests</a>
 
 
                              <div class="alert alert-warning" role="alert">
@@ -743,7 +743,7 @@
 
                      {%endfor%}
                    </select>
-
+                   <div class='spacer' style='height:20px;'></div>
                    <div class="alert alert-info" role="alert">
                      Assigning project issues helps organize and delegate tasks
                    </div>
@@ -788,7 +788,7 @@
             <div class="modal-body" style='margin:0 auto;text-align:center;'>
               <h1 style='font-size:20px;'>Are you sure you want to remove <span style='color:gray;font-size:20px;'>{{projectname}}</span>?<h1>
 
-                <strong style='font-size:16px;'>Removed jobs cannot be restored!</strong>
+                <strong style='font-size:16px;'>Removed projects cannot be restored!</strong>
                 <div class='spacer' style='height:10px;'></div>
               <a href='/delete/{{projectname}}' class="btn btn-danger">Delete</a>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" style='margin-left:20px;'>Cancel</button>
@@ -896,8 +896,7 @@
               <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://www.facebook.com/profile.php?id=100011354314736" title="Facebook share" target="_blank" style='color:black;text-decoration:none;'>
               <span class="badge badge-secondary" style='background-color:#3b5998;'><i class="fab fa-facebook-f" style='font-size:1.6em;color:white;margin-left:4px;margin-right:4px;'></i></span>
               </a> <!-- here, will have to change with gitmeet profile on facebook-->
-             <a class="twitter customer share" href="https://twitter.com/share?url=https://gitmeet.com/{{owner}}/{{projectname}}&amp;text=Can you assist with project '{{projectname}}' on @GitMeet? '{{job.title}}': &amp;hashtags=GitMeet" title="Twitter share" target="_blank" style='text-decoration:none;color:black;'>
-
+              <a class="twitter customer share" href="https://twitter.com/share?url=https://gitmeet.com/{{owner}}/{{projectname}}&amp;text=Can you assist with project '{{projectname}}' on @GitMeet? '{{job.title}}': &amp;hashtags=GitMeet" title="Twitter share" target="_blank" style='text-decoration:none;color:black;'>
                 <span class="badge badge-secondary" style='background-color:#55acee;'><i class="fab fa-twitter" style='font-size:1.6em;color:white;'></i></span>
 
               </a>
