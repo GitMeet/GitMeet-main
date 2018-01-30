@@ -52,4 +52,4 @@ GitMeet is a primarily Python App, and utilizes the following:
 
 # Contributing
 
-GitMeet is opensource and listed under and MIT license. We welcome all contribution and suggestions. Please see Contributing.md for more information.
+GitMeet is opensource and listed under and MIT license. We welcome all contribution and suggestions. Please see CODE_OF_CONDUCT.md for more information.
