@@ -295,7 +295,7 @@
 
   <div class='spacer' style='height:10px;'></div>
   <!-- Button trigger modal -->
-<button type="button" id='recommendation_profile' class="invite_button" data-toggle="modal" data-target="#exampleModal" style='float:right;margin-right:20%;margin-top:1%;color:white'  data-toggle1="tooltip" data-placement="bottom" title="what project creators see when viewing your requests">
+<button type="button" id='recommendation_profile' class="invite_button" data-toggle="modal" data-target="#exampleModal" style='float:right;margin-right:20%;margin-top:1%;color:white'  data-toggle1="tooltip" data-placement="bottom" title="your developer requests card">
  Quick View
 </button>
 
@@ -319,20 +319,7 @@
                 </div>
               </div>
               <div class='spacing' style='height:100px;'></div>
-              <div class="card-body" style='text-align:center;'>
-                <h5 class="card-title" style='font-size:35px;'><strong><u>Experience</u></strong></h5>
-                {%if joined%}
-                <div class="card border-dark mb-3" style="max-width:40rem;border-radius:10px;border-color:black">
-                  <div class="card-body text-primary">
-
-                    <p class="card-text" style='color:black;font-size:20px;'><strong>Projectname</strong></p>
-                  </div>
-                </div>
-                {%else%}
-                  <i>{{username}} has not joined any projects</i>
-                {%endif%}
-
-              </div>
+              
             </div>
             <div class="card" style='border-top:none;border-right:none;border-bottom:none;text-align:center;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>
 
