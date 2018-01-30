@@ -4,6 +4,10 @@ import random
 import project
 import tigerSqlite
 import functools
+''''
+top_projects.db
+CREATE TABLE best (projectname text, owner text)
+'''
 def top_projects(huristics):
     '''ulimately, read from file created by "click" program to select top project'''
     @functools.wraps(huristics)
@@ -25,10 +29,12 @@ class TopProjects:
     def __init__(self):
         self.t = tigerSqlite.Sqlite('projects.db')
         self.projects = self.get_top_projects()
+        print "the projects are", self.projects
 
-    @top_projects
+
     def get_top_projects(self):
-        return self.t.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
+        return [i for i in self.t.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects') if any(a == i[0] and b == i[2] for a, b in tigerSqlite.Sqlite('top_projects.db').get_projectname_owner('best'))]
+
 
     @staticmethod
     def months_of_the_year():
@@ -49,3 +55,4 @@ class TopProjects:
         top_project = collections.namedtuple('top_project', 'owner, project')
         for pro in self.projects:
             yield top_project(pro[2], project.Project(pro))
+
