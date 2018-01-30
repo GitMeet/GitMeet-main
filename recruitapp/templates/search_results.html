@@ -245,7 +245,7 @@
   </nav>
   <nav class="nav">
     <div class='spacer' style='width:20%;'></div>
-    <h1 style='color:black;font-size:23px;'>{{'No' if engine.number_of_results == 0 else engine.number_of_results}} results for "{{query}}"</h1>
+    <h1 style='color:black;font-size:23px;'>{{'No' if engine.number_of_results == 0 else engine.number_of_results}} {{'results' if engine.number_of_results != 1 else 'result'}} for "{{query}}"</h1>
 
   </nav>
   <div class='underscore' style='height:2px;background-color:gray;width:60%;margin-left:20%;'></div>
