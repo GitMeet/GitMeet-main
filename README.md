@@ -39,3 +39,17 @@ GitMeet utilizes machine learning to suggest developers who may be best able to 
 # 8. Developer Invitations
 
 GitMeet enables project creators to invite users to join a project from the prospective teammember's GitMeet profile. The project owner can select the project and job, and the prospective teammember will be sent a developer invitation.
+
+
+## Tech Stack
+
+GitMeet is a primarily Python App, and utilizes the following:
+* Python
+* Flask
+* HTML5/CSS
+* Bootstrap
+* Sqlite3
+
+# Contributing
+
+GitMeet is opensource and listed under and MIT license. We welcome all contribution and suggestions. Please see Contributing.md for more information.
