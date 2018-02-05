@@ -1104,6 +1104,10 @@ def authorized(oauth_token):
     username, avatar_url, email, summary,
 
     """
+    
+@app.route('/sitemap.xml')
+def sitemap():
+    return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
 @app.errorhandler(404)
 def page_not_found(e, methods=['GET', 'POST']):
