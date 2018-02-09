@@ -12,6 +12,6 @@ class User:
         self.colors = ['green', '#E3C611', 'red', 'blue', 'yellow', 'orange', '#E10D87', '#11E3D3']
         random.shuffle(self.colors)
         self.colors = iter(self.colors)
-        options = collections.namedtuple('options', ['tags', 'recieve_invites', 'display_email'])
-        self.__dict__ = {a:b if a != 'extra' else options(*[[(tag, next(self.colors, 'blue')) for tag in a[i]] if i == 'tag' else a[i] for i in ['tags', 'recieve_invites', 'display_email']]) for a, b in zip(self.headers, data)}
+        options = collections.namedtuple('options', ['tags', 'receive_invites', 'display_email'])
+        self.__dict__ = {a:b if a != 'extra' else options(*[[(tag, next(self.colors, 'blue')) for tag in a[i]] if i == 'tag' else a[i] for i in ['tags', 'receive_invites', 'display_email']]) for a, b in zip(self.headers, data)}
     

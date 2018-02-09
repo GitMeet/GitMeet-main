@@ -12,11 +12,11 @@ GitMeet provides users with the ability to import repositories from GitHub and c
 
 # 4. Job postings
 
-GitMeet provides a clear, concise method of creating to-do listings of jobs, sub-projects, and issues by enabling the user to create separate job cards. Each card allows the user to import the issue from the project's repository on GitHub or create a new description of the task, issue, or bug. The user can tag the card with a listing of the issues or the technologies needed to accomplish the task. Site users can request to work on the particlar job or issue, and the project creator will recieve an invitation notice.
+GitMeet provides a clear, concise method of creating to-do listings of jobs, sub-projects, and issues by enabling the user to create separate job cards. Each card allows the user to import the issue from the project's repository on GitHub or create a new description of the task, issue, or bug. The user can tag the card with a listing of the issues or the technologies needed to accomplish the task. Site users can request to work on the particular job or issue, and the project creator will receive an invitation notice.
 
 # 5. Sending join requests
 
-To give project creators flexibility and control over their GitMeet projects, users who wish to work on a specific job on a project must send a join request. The project owner will recieve the request will be shown a summary of the applicant's project experience, developer skills, and summary, along with the option to add the user to the project or decline the request.
+To give project creators flexibility and control over their GitMeet projects, users who wish to work on a specific job on a project must send a join request. The project owner will receive the request will be shown a summary of the applicant's project experience, developer skills, and summary, along with the option to add the user to the project or decline the request.
 
 # 6. Award Developer Reputation bonuses
 
@@ -24,7 +24,7 @@ To encourage or to award quality repositiory contributions by teammembers, GitMe
 
 # 7. Developer Recommendations
 
-GitMeet utilizes machine learning to suggest developers who may be best able to work on specific projects. Each user who is the owner of at least project will recieve recommendations once a day. The recipient can view the recommended user's mini profile and navigate to the user's profile and select the project and job to invite the user to.
+GitMeet utilizes machine learning to suggest developers who may be best able to work on specific projects. Each user who is the owner of at least project will receive recommendations once a day. The recipient can view the recommended user's mini profile and navigate to the user's profile and select the project and job to invite the user to.
 
 # 8. Developer Invitations
 

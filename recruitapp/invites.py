@@ -1,12 +1,12 @@
 import collections
 class Job:
-    def __init__(self, pontial_worker, *args):
+    def __init__(self, potential_worker, *args):
 
         self.for_project = args[0]
         self.owner = args[1]
         self.name = args[2]
         self.id = args[3]
-        self.potential_worker = pontial_worker
+        self.potential_worker = potential_worker
     def __repr__(self):
         return "/invite_user/{owner}/{for_project}/{potential_worker}/{id}".format(**self.__dict__)
 

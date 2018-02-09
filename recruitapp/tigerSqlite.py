@@ -8,7 +8,7 @@ from abc import ABCMeta, abstractmethod
 class TableNotFoundError(Exception):
     def __init__(self, message):
         Exception.__init__(self, message)
-class EmptyDictParamters(Exception):
+class EmptyDictParameters(Exception):
     def __init__(self, message):
         Exception.__init__(self, message)
 class DeletionWithEmptyParameters(Exception):
@@ -39,7 +39,7 @@ class SQL:
 
     @abstractmethod
     def select(self, table, values = [], *args):
-        """`values` stores the columns to be select, and `args` stores the colums whose values must correspond to those in `args`"""
+        """`values` stores the columns to be select, and `args` stores the columns whose values must correspond to those in `args`"""
 
 
     @abstractmethod
@@ -60,7 +60,7 @@ class SQL:
         """
 
     @abstractmethod
-    def delete(self, tablname, *args):
+    def delete(self, tablename, *args):
         #removes the specified columns
         pass
 
@@ -122,7 +122,7 @@ class Sqlite(SQL):
 
     def insert(self, tablename, *args):
         if not args:
-            raise  EmptyDictParamters("Parameters must not contain empty dictionaries")
+            raise  EmptyDictParameters("Parameters must not contain empty dictionaries")
 
         command = 'INSERT INTO {} ({}) VALUES ({})'.format(tablename, ', '.join([a for a, b in args]), ', '.join(['?']*len(args)))
         print command
@@ -134,13 +134,13 @@ class Sqlite(SQL):
     def update(self, tablename, targets, new_vals):
 
         if not (targets or new_vals):
-            raise  EmptyDictParamters("Parameters must not contain empty dictionaries")
+            raise  EmptyDictParameters("Parameters must not contain empty dictionaries")
 
         command = 'UPDATE {} SET {} WHERE {}'.format(tablename, ", ".join("{}=?".format(a) for a, b in targets), ", ".join("{}=?".format(a) for a, b in new_vals))
         print "command", command
         conn = sqlite3.connect(self.filename)
         #print [json.dumps(b) if not isinstance(b, int) else b for a, b in data1]+[json.dumps(b) if not isinstance(b, int) or not isinstance(b, float) else b for a, b in data2]
-        
+
         conn.execute(command, [json.dumps(b) if not isinstance(b, int) else b for a, b in targets]+[json.dumps(b) if not isinstance(b, int) or not isinstance(b, float) else b for a, b in new_vals])
         conn.commit()
         conn.close()

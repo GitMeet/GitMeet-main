@@ -184,7 +184,7 @@
 
             <!--<div class="dropdown-divider"></div>-->
             <!--
-            Here, will probabily have to trigger popup with user developer report
+            Here, will probably have to trigger popup with user developer report
             Instead of full request, just say "New Request from {{username}}"
             -->
             <a href='/request/project/user' style='text-decoration:none;color:black'>New request from <strong>Taekwondo15</strong></a>
@@ -297,7 +297,7 @@
                   </div>
                   <div class='spacer' style='height:15px;'></div>
                   <label for="tags">Project Tags</label>
-                  <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scaping,Multi-Processing">
+                  <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scraping,Multi-Processing">
                   <small id="tag_instructions" class="form-text text-muted">
                     Enter project tags separated by commas
                   </small>
@@ -331,7 +331,7 @@
                            <a href='/delete/{{projectname}}' class='delete_project' style='text-decoration:none'>Delete project</a>
                            <hr>
                            <div class="alert alert-danger" role="alert">
-                             <strong>Project deletion is permenant and will remove all users and job data associated with it</strong>
+                             <strong>Project deletion is permanent and will remove all users and job data associated with it</strong>
                            </div>
                          </nav>
                        </div>
@@ -403,7 +403,7 @@
                        <label for="description">Job description</label>
                        <textarea class="form-control" id="description" rows="3" name='job_description' aria-describedby="instructions" required></textarea>
                        <small id="instructions" class="form-text text-muted">
-                         Add revelent duties
+                         Add relevant duties
                        </small>
                      </div>
                      <div class="invalid-feedback">
@@ -502,7 +502,7 @@
   {%if new_rep.rep > 0%}
   var delay = 2000;
          setTimeout(function() {
-           $.bootstrapGrowl('You earned {{new_rep.rep}} repution!',{
+           $.bootstrapGrowl('You earned {{new_rep.rep}} reputation!',{
                type: 'success',
                delay: 4000,
                width: 340,

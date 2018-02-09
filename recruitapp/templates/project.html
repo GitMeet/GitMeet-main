@@ -261,7 +261,7 @@
 
             <!--<div class="dropdown-divider"></div>-->
             <!--
-            Here, will probabily have to trigger popup with user developer report
+            Here, will probably have to trigger popup with user developer report
             Instead of full request, just say "New Request from {{username}}"
             -->
             {%if job_requests.length > 0%}
@@ -636,7 +636,7 @@
                     </div>
                     <div class='spacer' style='height:15px;'></div>
                     <label for="tags">Project Tags</label>
-                    <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scaping,Multi-Processing" value='{{tag_values}}'>
+                    <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scraping,Multi-Processing" value='{{tag_values}}'>
                     <small id="tag_instructions" class="form-text text-muted">
                       Enter project tags separated by commas
                     </small>
@@ -715,7 +715,7 @@
                     <label for="description">Job Tasks</label>
                     <textarea class="form-control" id="description" rows="3" name='job_description' aria-describedby="instructions" required></textarea>
                     <small id="instructions" class="form-text text-muted">
-                      Add revelent duties
+                      Add relevant duties
                     </small>
                   </div>
                   <div class="invalid-feedback">
@@ -1010,9 +1010,9 @@
    * jQuery function to prevent default anchor event and take the href * and the title to make a share popup
    *
    * @param  {[object]} e           [Mouse event]
-   * @param  {[integer]} intWidth   [Popup width defalut 500]
-   * @param  {[integer]} intHeight  [Popup height defalut 400]
-   * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
+   * @param  {[integer]} intWidth   [Popup width default 500]
+   * @param  {[integer]} intHeight  [Popup height default 400]
+   * @param  {[boolean]} blnResize  [Is popup resizable default true]
    */
   $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
 
@@ -1038,7 +1038,7 @@
   {%if new_rep.rep > 0%}
   var delay = 2000;
          setTimeout(function() {
-           $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer repution!',{
+           $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer reputation!',{
                type: 'success',
                delay: 4000,
                width: 400,
