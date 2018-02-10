@@ -27,17 +27,45 @@ import inspect
 import search_results
 import dev_recogs
 import top_projects as top_project
+import contextlib
+import blog_articles
+import flask_mail
+
+
 #BUG:for bonus awards may have to update rep in repdb, and then display two messages: one for the rep increase (success), and another for the project name (info)
 app = flask.Flask(__name__)
+app.config['GITHUB_CLIENT_ID'] = '***************'
+app.config['GITHUB_CLIENT_SECRET'] = ''************************'
 github = GitHub(app)
-userdb = tigerSqlite.Sqlite('userprofiles.db')
-repdb = tigerSqlite.Sqlite('user_rep.db')
+userdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/userprofiles.db')
+repdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/user_rep.db')
+app.config['MAIL_SERVER'] = '***************'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = '****************'
+app.config['MAIL_PASSWORD'] = '****************'
+mail = flask_mail.Mail(app)
+def send_email(subject, sender, recipients, text_body, html_body):
+    msg = flask_mail.Message(subject, sender=sender, recipients=recipients)
+    msg.body = text_body
+    msg.html = html_body
+    mail.send(msg)
+
+def log_results(*args, **kwargs):
+    current_time = datetime.datetime.now()
+    f = open(__import__('urlparse').urljoin(os.getcwd(), 'logging_results.txt'), 'w' if kwargs.get('overwrite', False) else 'a')
+    if (len(kwargs) == 1 and 'overwrite' not in kwargs) or len(kwargs) > 1:
+        f.write("{}/{}/{}:{}:{}:{} ".format(current_time.day, current_time.month, current_time.year, current_time.hour, current_time.minute)+', '.join('{}:{}'.format(a, b) for a, b in kwargs.items())+'\n')
+    else:
+        f.write("{}/{}/{}:{}:{}:{} ".format(current_time.day, current_time.month, current_time.year, current_time.hour, current_time.minute)+', '.join(map(str, args))+'\n')
+    f.close()
 '''
 tablename: users
 username text, name text, avatar text, email text, summary text, id int, extra text
 '''
-projectdb = tigerSqlite.Sqlite('projects.db')
-#projectdb.create('projects', ('projectname', 'text'), ('description', 'text'), ('owner', 'text'), ('id', 'int'), ('team', 'text'), ('teamneeded', 'text'), ('requests', 'text'))
+projectdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/projects.db')
+#projectdb.create('projects', ('home/jamespetullo/gitmeet/projectname', 'text'), ('description', 'text'), ('owner', 'text'), ('id', 'int'), ('team', 'text'), ('teamneeded', 'text'), ('requests', 'text'))
 '''
 tablename: projects
 ('projectname', 'text'), ('description', 'text'), ('owner', 'text'), ('id', 'int'), ('team', 'text'), ('teamneeded', 'text'), ('requests', 'text'), ('extra', 'text')
@@ -78,10 +106,11 @@ recommendations.db
 tablename: dev_recs
 touser text, messages text
 '''
-requestdb = tigerSqlite.Sqlite('requests.db')
-confirmationdb = tigerSqlite.Sqlite('confirmation_db.db')
-bonusdb = tigerSqlite.Sqlite('bonuses.db')
-invitationdb = tigerSqlite.Sqlite('invites.db')
+blogdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/blogposts.db')
+requestdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/requests.db')
+confirmationdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/confirmation_db.db')
+bonusdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/bonuses.db')
+invitationdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/invites.db')
 class User:
     def __init__(self):
         self._user = None
@@ -110,7 +139,7 @@ class Methods:
 
 class Jobs:
     def __init__(self, listing):
-        self.__tags = list(itertools.chain.from_iterable(pickle.load(open('full_so_tags.txt'))))
+        self.__tags = list(itertools.chain.from_iterable(pickle.load(open('/home/jamespetullo/gitmeet/full_so_tags.txt'))))
         job = collections.namedtuple('job', ['title', 'description', 'tags', 'bugs', 'id'])
         self.__colors = ['#c2e0c6', '#ee0701', '#cccccc', '#84b6eb', '#7057ff', '#ff625f', '#128A0C', '#e6e6e6', '#fef2c0', '#cc317c', '#d4c5f9', '#ffffff', '41B6D9', 'D941A9']
         self.colors = iter(self.__colors)
@@ -437,7 +466,13 @@ def report_issue():
         subject = flask.request.form['subject']
         message = flask.request.form['message']
         new_message = Message(*[email, subject, name, message, datetime.datetime.now()])
-        pickle.dump(pickle.load(open('user_messages.txt'))+[[new_message.plain_message, new_message.message_html]], open('user_messages.txt', 'w'))
+
+        if open('/home/jamespetullo/gitmeet/user_messages.txt').read():
+            pickle.dump(pickle.load(open('/home/jamespetullo/gitmeet/user_messages.txt'))+[[new_message.plain_message, new_message.message_html]], open('/home/jamespetullo/gitmeet/user_messages.txt', 'w'))
+        else:
+            pickle.dump([[new_message.plain_message, new_message.message_html]], open('/home/jamespetullo/gitmeet/user_messages.txt', 'w'))
+
+        #send_email(subject, email, ['jpetullo14@gmail.com'], message, new_message.message_html)
         return flask.render_template('report_issues.html', confirmation_message = 'Message has been successfully sent.')
     return flask.render_template('report_issues.html', confirmation_message = '')
 
@@ -558,7 +593,7 @@ def clear_all():
         if any(a == user.username for a, b in invitationdb.get_for_messages('invites')):
             global invitationdb
             invitationdb.update('invites', [('messages', [])], [('for', user.username)])
-    dev_recommendations = tigerSqlite.Sqlite('recommendations.db')
+    dev_recommendations = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/recommendations.db')
     if any(a == user.username for a, b in dev_recommendations.get_touser_messages('dev_recs')):
         dev_recommendations.update('dev_recs', [('messages', [])], [('touser', user.username)])
     return flask.redirect('/{}'.format(user.username))
@@ -576,7 +611,7 @@ def requirements():
     return flask.render_template('requirements.html')
 
 def return_home(targetuser, alert, alert_type):
-    print "in return_home, checking this", (alert, alert_type)
+    print "in returhome, checking this", (alert, alert_type)
     home_visitor_data = [] if not user.username else [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
     try:
         user_data = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == targetuser][0]
@@ -584,7 +619,7 @@ def return_home(targetuser, alert, alert_type):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiosyncrasy", user_data
+    print "userdata here testing idiocincrety", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -626,7 +661,7 @@ def return_home(targetuser, alert, alert_type):
                 yield project
 
 
-    return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert=alert, general_alert_type=alert_type, invitation_messages = messaged_invitations.Invitations(user.username, invitationdb))
+    return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert=alert, general_alert_type=alert_type, invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
 
 
 def verify_invite_user(route_handler):
@@ -667,7 +702,7 @@ def invite_user(owner, projectname, targetuser, job_id):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiosyncrasy", user_data
+    print "userdata here testing idiocincrety", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -714,17 +749,17 @@ def invite_user(owner, projectname, targetuser, job_id):
 
         if any({'from':user.username, 'projectname':projectname, 'job_id':int(job_id)} in b for a, b in data):
 
-            return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="You already invited {} to {} in that capacity".format(targetuser, projectname), general_alert_type= "warning", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb))
+            return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="You already invited {} to {} in that capacity".format(targetuser, projectname), general_alert_type= "warning", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
     if not data:
         global invitationdb
 
         invitationdb.insert('invites', ('for', targetuser), ('messages', [{'from':user.username, 'projectname':projectname, 'job_id':int(job_id)}]))
-        return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb))
+        return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
     if not any(a == targetuser for a, b in invitationdb.get_for_messages('invites')):
         global invitationdb
         print "down here, about to return return_home"
         invitationdb.insert('invites', ('for', targetuser), ('messages', [{'from':user.username, 'projectname':projectname, 'job_id':int(job_id)}]))
-        return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb))
+        return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
 
     try:
         total_messages = [b for a, b in invitationdb.get_for_messages('invites') if a == targetuser][0]
@@ -733,16 +768,18 @@ def invite_user(owner, projectname, targetuser, job_id):
     global invitationdb
     invitationdb.update('invites', [('messages', total_messages+[{'from':user.username, 'projectname':projectname, 'job_id':int(job_id)}])], [('for', targetuser)])
 
-    return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb))
+    return flask.render_template('user_home.html', home_user = [] if not home_visitor_data else gitmeet_user.User(home_visitor_data), user=gitmeet_user.User(user_data), visitor=user.username, visitor_avatar = user.avatar, github_projects = GithubProjects(github_projects), flag = flag, projects=user_projects, num=len(user_projects), joined=joined_projects.Joined(targetuser, projectdb), new_rep = rep_info.Rep(rep1, datetimes_rep), dates = dates, total_rep = increase, visitor_reputation = user_rep+rep1, tips=get_tips(user.username, username=targetuser), job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), bonuses = bonus_updates.Bonuses(user.username, bonusdb), invitations = invites.Invites(user.username, targetuser, projectdb), general_alert="Invitation sent!", general_alert_type= "success", invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
 #http://127.0.0.1:5000/accept_invite/pytohtml/1
 def verify_accept_invite(route_handler):
     @functools.wraps(route_handler)
     def route_wrapper(**args):
         if not user.username:
             return flask.render_template('unauthorized.html')
-        if not any(a == args.get('projectname') and b == args.get('owner') for a, b in projectdb.get_projectname_owner('projects')):
+        if not any(a == args.get('projectname') for a, b in projectdb.get_projectname_owner('projects')):
+            print('testing accept_invite route for unauthorized. if you are seeing this, then the projectname is not found')
             return flask.render_template('unauthorized.html')
         if not any(any(b['id'] == int(args.get('job_id')) for b in c) for a, b, c in projectdb.get_projectname_owner_teamneeded('projects')):
+            print('testing accept_invite route for unauthorized. if you are seeing this, then the job is not found')
             return flask.render_template('unauthorized.html')
         return route_handler(**args)
     return route_wrapper
@@ -867,7 +904,7 @@ def user_profile(username):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiosyncrasy", user_data
+    print "userdata here testing idiocincrety", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -1026,6 +1063,33 @@ def award_bonus(projectname, user_name, job_id):
 
 
 
+@app.route('/login')
+def login():
+
+    if user.username: #will later redirect to home project page
+        return flask.redirect('/')
+    return github.authorize(scope="user:email")
+
+@app.route('/settings', methods=['GET', 'POST'])
+@check_if_authorized
+def settings():
+
+    #username text, name text, avatar text, email text, summary text, id int, extra text
+    #['username', 'name', 'avatar', 'email', 'summary', 'id', 'extra']
+    extras = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][-1]
+    user_data = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
+    print "extras in settings", extras
+    original_rep = extras[-1]['rep']
+    headers = gitmeet_user.User.get_headers()
+    current_data = {a:b for a, b in zip(headers, user_data)}
+    if flask.request.method == "POST":
+        new_data = flask.request.form
+        current_data = {a:new_data.get(a, b) if a != "extra" else dict([(i, flask.request.form.getlist(i)) if i != 'tags' else (i, re.split(',\s*', new_data.get('tags', ''))) for i in ['tags', 'recieve_invites', 'display_email']]+[('rep', original_rep)]) for a, b in current_data.items()}
+        print "should be getting this", [(i, current_data[i]) for i in headers]
+        global userdb
+        userdb.update('users', [(i, current_data[i]) for i in headers], [('username', user.username)])
+        return flask.redirect('/{}'.format(user.username))
+    return flask.render_template('settings.html', visitor = user.username, username=user.username, view_avatar=user.avatar, user_id=user_data[5], user_email = user.email if user.email else '', user_tags = '' if user_data[-1] is None else ','.join(user_data[-1].get('tags', '')), user_bio=user_data[-3], regular_tags = '' if not user_data[-1].get('tags', '') else list(zip(user_data[-1].get('tags', ''), ['green', 'red', 'blue', '#EFE630', '#E10D87', '#11E3D3', '#E49434'])), joined=[], job_requests = dev_requests.Requests(user.username, requestdb, userdb, projectdb), messages = confirms.Messages(user.username, confirmationdb), invitation_messages = messaged_invitations.Invitations(user.username, invitationdb), developer_recommendations = dev_recogs.Recommendations(user.username))
 
 @app.route('/signout')
 def signout():
@@ -1071,8 +1135,8 @@ def authorized(oauth_token):
         #'CREATE TABLE fullrep (username text, reputation text)')
         ids = [i[0] for i in userdb.get_id('users')]
         #username text, name text,avatar text, email text, summary text, id int
-        # {u'rep': 1000, u'receive_invites': [u'I wish to receive developer invitations'], u'display_email': [u'Show email on profile'], u'tags': [u'Python', u'Java', u'Decorators']}
-        userdb.insert('users', ('username', user.username), ('name', data['name'] if data['name'] is not None else ''), ('avatar', data['avatar_url']), ('email', data['email'] if data['email'] is not None else ''), ('summary', data['bio'] if data['bio'] is not None else ''), ('id', 1 if not ids else max(ids)+1), ('extra', {u'rep': 0, u'receive_invites': [u'I wish to receive developer invitations'], u'display_email': [u'Show email on profile'], u'tags': []}))
+        # {u'rep': 1000, u'recieve_invites': [u'I wish to recieve developer invitations'], u'display_email': [u'Show email on profile'], u'tags': [u'Python', u'Java', u'Decorators']}
+        userdb.insert('users', ('username', user.username), ('name', data['name'] if data['name'] is not None else ''), ('avatar', data['avatar_url']), ('email', data['email'] if data['email'] is not None else ''), ('summary', data['bio'] if data['bio'] is not None else ''), ('id', 1 if not ids else max(ids)+1), ('extra', {u'rep': 0, u'recieve_invites': [u'I wish to recieve developer invitations'], u'display_email': [u'Show email on profile'], u'tags': []}))
     new_user_data = userdb.get_username_name_avatar_email_summary_id('users')
     _final_data = dict(zip(['name', 'avatar_url', 'email', 'bio', 'id'], [i for i in new_user_data if i[0] == user.username][0][1:]))
     print "_final_data", _final_data
@@ -1082,7 +1146,7 @@ def authorized(oauth_token):
     user.avatar = _final_data['avatar_url']
     user.bio = _final_data['bio']
     user.id = _final_data['id']
-    print list(tigerSqlite.Sqlite.select_all('users', 'userprofiles.db'))
+    print list(tigerSqlite.Sqlite.select_all('users', '/home/jamespetullo/gitmeet/userprofiles.db'))
 
     r = requests.get('http://freegeoip.net/json/')
     if r.ok:
@@ -1104,10 +1168,31 @@ def authorized(oauth_token):
     username, avatar_url, email, summary,
 
     """
-
 @app.route('/sitemap.xml')
 def sitemap():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
+
+@app.route('/blog/<thetitle>', methods=['GET', 'POST'])
+def blog_article(thetitle):
+    article = collections.namedtuple('article', ['title', 'summary', 'author', 'body', 'date', 'tags'])
+
+    return flask.render_template('blog_post.html', article = article(*filter(lambda x:x[0] == thetitle, blogdb.get_title_snapshot_author_body_date_tags('posts'))[0]))
+
+
+
+@app.route('/blog', methods = ['GET', 'POST'])
+def blog():
+    if flask.request.method == 'POST':
+        if not user.username or user.username not in ['GitMeet', 'Ajax12345']:
+            return flask.render_template('unauthorized.html')
+        title = flask.request.form['title']
+        summary = flask.request.form['summary']
+        tags = filter(None. re.split(',\s*', flask.request.form['tags']))
+        body = flask.request.form['post']
+        post_date = datetime.datetime.now()
+        global blogdb
+        blogdb.insert('posts', ('title', title), ('snapshot', summary), ('author', user.username), ('body', body), ('date', "{}-{}-{}".format(post_date.day, post_date.month, post_date.year)), ('tags', tags))
+    return flask.render_template('blog.html', blog = blog_articles.Blog(username = user.username))
 
 @app.errorhandler(404)
 def page_not_found(e, methods=['GET', 'POST']):
@@ -1116,7 +1201,4 @@ def page_not_found(e, methods=['GET', 'POST']):
         return flask.redirect('/search/{}/1'.format(query))
     return flask.render_template('404.html')
 
-if __name__ == "__main__":
-    app.debug = True
 
-app.run()
