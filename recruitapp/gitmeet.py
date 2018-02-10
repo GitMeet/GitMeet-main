@@ -576,7 +576,7 @@ def requirements():
     return flask.render_template('requirements.html')
 
 def return_home(targetuser, alert, alert_type):
-    print "in returhome, checking this", (alert, alert_type)
+    print "in return_home, checking this", (alert, alert_type)
     home_visitor_data = [] if not user.username else [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
     try:
         user_data = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == targetuser][0]
@@ -584,7 +584,7 @@ def return_home(targetuser, alert, alert_type):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiocincrety", user_data
+    print "userdata here testing idiosyncrasy", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -667,7 +667,7 @@ def invite_user(owner, projectname, targetuser, job_id):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiocincrety", user_data
+    print "userdata here testing idiosyncrasy", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -867,7 +867,7 @@ def user_profile(username):
         return flask.render_template('404.html')
     project_data = projectdb.get_projectname_description_owner_id_team_teamneeded_requests_extra('projects')
 
-    print "userdata here testing idiocincrety", user_data
+    print "userdata here testing idiosyncrasy", user_data
 
     #['projectname', 'description', 'owner', 'id', 'team', 'teamneeded', 'requests', 'extra']
     visitor_data = userdb.get_username_extra('users')
@@ -1071,8 +1071,8 @@ def authorized(oauth_token):
         #'CREATE TABLE fullrep (username text, reputation text)')
         ids = [i[0] for i in userdb.get_id('users')]
         #username text, name text,avatar text, email text, summary text, id int
-        # {u'rep': 1000, u'recieve_invites': [u'I wish to recieve developer invitations'], u'display_email': [u'Show email on profile'], u'tags': [u'Python', u'Java', u'Decorators']}
-        userdb.insert('users', ('username', user.username), ('name', data['name'] if data['name'] is not None else ''), ('avatar', data['avatar_url']), ('email', data['email'] if data['email'] is not None else ''), ('summary', data['bio'] if data['bio'] is not None else ''), ('id', 1 if not ids else max(ids)+1), ('extra', {u'rep': 0, u'recieve_invites': [u'I wish to recieve developer invitations'], u'display_email': [u'Show email on profile'], u'tags': []}))
+        # {u'rep': 1000, u'receive_invites': [u'I wish to receive developer invitations'], u'display_email': [u'Show email on profile'], u'tags': [u'Python', u'Java', u'Decorators']}
+        userdb.insert('users', ('username', user.username), ('name', data['name'] if data['name'] is not None else ''), ('avatar', data['avatar_url']), ('email', data['email'] if data['email'] is not None else ''), ('summary', data['bio'] if data['bio'] is not None else ''), ('id', 1 if not ids else max(ids)+1), ('extra', {u'rep': 0, u'receive_invites': [u'I wish to receive developer invitations'], u'display_email': [u'Show email on profile'], u'tags': []}))
     new_user_data = userdb.get_username_name_avatar_email_summary_id('users')
     _final_data = dict(zip(['name', 'avatar_url', 'email', 'bio', 'id'], [i for i in new_user_data if i[0] == user.username][0][1:]))
     print "_final_data", _final_data
@@ -1104,7 +1104,7 @@ def authorized(oauth_token):
     username, avatar_url, email, summary,
 
     """
-    
+
 @app.route('/sitemap.xml')
 def sitemap():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])

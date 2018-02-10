@@ -11,9 +11,9 @@ class User:
     def __init__(self, data):
         self.colors = ['green', 'red', 'blue', '#EFE630', '#E10D87', '#11E3D3', '#E49434']
         self.colors = iter(self.colors)
-        options = collections.namedtuple('options', ['tags', 'recieve_invites', 'display_email', 'reputation'])
+        options = collections.namedtuple('options', ['tags', 'receive_invites', 'display_email', 'reputation'])
 
-        self.__dict__ = {a:b if a != 'extra' else options(*[[[tag, next(self.colors, 'blue')] for tag in b[i]] if i == 'tags' else b.get(i, 0) for i in ['tags', 'recieve_invites', 'display_email', 'rep']]) if b is not None else options(*[[], ["I wish to recieve developer invitations"], ["Show email on profile"]]) for a, b in zip(self.headers, data)}
+        self.__dict__ = {a:b if a != 'extra' else options(*[[[tag, next(self.colors, 'blue')] for tag in b[i]] if i == 'tags' else b.get(i, 0) for i in ['tags', 'receive_invites', 'display_email', 'rep']]) if b is not None else options(*[[], ["I wish to receive developer invitations"], ["Show email on profile"]]) for a, b in zip(self.headers, data)}
 
     @property
     def tag_length(self):

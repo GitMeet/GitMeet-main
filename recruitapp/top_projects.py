@@ -8,11 +8,11 @@ import functools
 top_projects.db
 CREATE TABLE best (projectname text, owner text)
 '''
-def top_projects(huristics):
-    '''ulimately, read from file created by "click" program to select top project'''
-    @functools.wraps(huristics)
+def top_projects(heuristics):
+    '''ultimately, read from file created by "click" program to select top project'''
+    @functools.wraps(heuristics)
     def wrapper(cls):
-        full_projects = huristics(cls)
+        full_projects = heuristics(cls)
         final_projects = []
         for i in range(4):
             while True:
