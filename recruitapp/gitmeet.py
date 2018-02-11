@@ -5,6 +5,7 @@ import json
 import tigerSqlite
 from github import Github
 import re
+import string
 import collections
 import itertools
 import pickle
@@ -14,6 +15,7 @@ import gitmeet_user
 import functools
 import datetime
 import rep_info
+import search_stats
 import common_errors as error
 import os
 import dev_requests
@@ -34,17 +36,18 @@ import flask_mail
 
 #BUG:for bonus awards may have to update rep in repdb, and then display two messages: one for the rep increase (success), and another for the project name (info)
 app = flask.Flask(__name__)
-app.config['GITHUB_CLIENT_ID'] = '***************'
-app.config['GITHUB_CLIENT_SECRET'] = ''************************'
+app.config['GITHUB_CLIENT_ID'] = '*****************'
+app.config['GITHUB_CLIENT_SECRET'] = '******************************'
 github = GitHub(app)
 userdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/userprofiles.db')
 repdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/user_rep.db')
-app.config['MAIL_SERVER'] = '***************'
+app.config['MAIL_SERVER'] = '*****************'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = '****************'
 app.config['MAIL_PASSWORD'] = '****************'
+app.secret_key = ''.join(random.choice(string.ascii_lowercase+string.ascii_uppercase + ''.join(map(str, range(10)))) for i in range(random.randint(10, 24)))
 mail = flask_mail.Mail(app)
 def send_email(subject, sender, recipients, text_body, html_body):
     msg = flask_mail.Message(subject, sender=sender, recipients=recipients)
@@ -112,25 +115,17 @@ confirmationdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/confirmation_db.
 bonusdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/bonuses.db')
 invitationdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/invites.db')
 class User:
-    def __init__(self):
-        self._user = None
-
-    @property
-    def username(self):
-        return self._user
-
-    @username.setter
-    def username(self, name):
-        self._user = name
-
-    def update_full(self, data):
-        self.__dict__.update(data)
+    def logout_user(self):
+        flask.session.clear()
 
     def __getattr__(self, name):
-        return self.__dict__[name] if name in self.__dict__ else None
+        try:
+            return flask.session[name]
+        except:
+            return None
 
     def __setattr__(self, name, val):
-        self.__dict__[name] = val
+        flask.session[name] = val
 class Methods:
     def __init__(self):
         pass
@@ -290,7 +285,7 @@ class PageResults:
         self.previous = self.page_number - 1
         self.next = self.page_number + 1
 
-        self.page_results = [self.results[i:i+5] for i in range(0, len(self.results), 5)]
+        self.page_results = [self.results[i:i+10] for i in range(0, len(self.results), 10)]
         if self.page_results:
             self.current_page = self.page_results[self.page_number] if self.page_number < len(self.page_results) else self.page_results[-1]
             self.page_range = map(lambda x:x+1, range(len(self.page_results)))
@@ -307,6 +302,12 @@ def search(query, page_num):
     s = search_results.SearchResults(re.sub('\s+', '', query).lower(), userdb, projectdb)
     full_results = [i for i in s]
     return flask.render_template('search_results.html', engine = s, query = query, page = PageResults(int(page_num)-1, full_results))
+
+@app.route('/search_stat/<stat>/<query>', methods=['GET', 'POST'])
+def search_stat(stat, query):
+    if flask.request.method == 'POST':
+        return flask.redirect('/search/{}/1'.format(flask.request.form['search_gitmeet']))
+    return flask.render_template('search_stat_results.html', search_stat_result = {'user':search_stats.UserSearch, 'project':search_stats.ProjectSearch, 'job':search_stats.JobSearch}[stat](str(query), stat))
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -1094,7 +1095,7 @@ def settings():
 @app.route('/signout')
 def signout():
     global user
-    user.__dict__ = {"_user":None}
+    user.logout_user()
     return flask.redirect('/')
 
 @github.access_token_getter
