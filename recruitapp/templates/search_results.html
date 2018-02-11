@@ -222,15 +222,19 @@
       </a>
       --->
 
-      <h1 class='title'><a href='/' style='text-decoration:none;color:#C2C1C1;'>GitMeet</a></h1>
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
 
+       </a>
+       <a href='/' style='text-decoration:none;color:color:#C2C1C1;'><span class='title' style='font-size:35px;margin-top:4px;'>GitMeet</span></a>
       <ul class="navbar-nav mr-auto" style='float:right;'>
+    <li class="nav-item active">
+     <a class="blog_link" href="#" style='text-decoration: none;'>Docs <span class="sr-only">(current)</span></a>
+     <a class="blog_link" href="#" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+   </li>
 
-      <li class="nav-item active">
-        <a class="blog_link" href="#" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
-      </li>
 
-      </ul>
+    </ul>
       <form class="form-inline" style='margin-right:1%;margin-top:1%;' method='POST' action=''>
       <input class="form-control mr-sm-2" type="text" placeholder="Search" name='search_gitmeet'>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='border-radius:6px;border-width:1.6px;color:white;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>Search</button>
@@ -261,15 +265,27 @@
         <ul class="list-group list-group-flush" style='text-align:center;'>
           <li class="list-group-item">
             <span class="badge badge-pill badge-secondary" style='float:left;'>{{engine.stats.users}}</span>
-            users
+            {%if engine.stats.users > 0%}
+                <a href='/search_stat/user/{{query}}' style='text-decoration:none;color:black;'>users</a>
+            {%else%}
+                users
+            {%endif%}
           </li>
           <li class="list-group-item">
             <span class="badge badge-pill badge-secondary" style='float:left;'>{{engine.stats.projects}}</span>
-            projects
+            {%if engine.stats.projects > 0%}
+                 <a href='/search_stat/project/{{query}}' style='text-decoration:none;color:black;'>projects</a>
+            {%else%}
+                projects
+            {%endif%}
           </li>
           <li class="list-group-item">
             <span class="badge badge-pill badge-secondary" style='float:left;'>{{engine.stats.jobs}}</span>
-            jobs
+            {%if engine.stats.jobs > 0%}
+                <a href='/search_stat/job/{{query}}' style='text-decoration:none;color:black;'>jobs</a>
+            {%else%}
+                jobs
+            {%endif%}
           </li>
         </ul>
       </div>
@@ -372,7 +388,7 @@
 
                       {%endif%}
                     {%else%}
-                      <p>No Team members</p>
+                      <p>No Teammembers</p>
                     {%endif%}
 
                   </div>
