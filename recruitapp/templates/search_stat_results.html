@@ -1,0 +1,402 @@
+<html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+.input_button{
+  border-radius: 6px;
+  border-width:2px;
+  border-color: #50B240;
+  background-color: none;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  width:100px;
+  height:35px;
+  color:white;
+  background-color: Transparent;
+}
+.input_button:hover{
+  background-color: #50B240;
+  transition: all .15s ease-in-out;
+}
+.title{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#C2C1C1;
+  font-size: 30px;
+}
+.blog_link{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.for_creators{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.for_developers{
+  color:#AFAEAE;
+  margin-left: 40px;
+  font-size: 20px;
+  float:right;
+}
+.jumbotron{
+  position: relative;
+  text-align: center;
+  /*
+     background-image: url("https://i.pinimg.com/originals/74/be/80/74be807dcfa4080be4971e1ad03e938a.jpg");
+     background-repeat: no-repeat;
+    background-size: cover;
+    */
+  /*  background-color:#57389E;*/
+
+}
+.gitlab_logo{
+   background-image: url("https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/wordmark/wm_no_bg.png");
+   background-repeat: no-repeat;
+  background-size: cover;
+}
+.main_header{
+  color:#ACACAC;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size:60px;
+
+}
+.enter{
+  position: relative;
+  text-align: center;
+  width:500px;
+  height:230px;
+  background-color: #dfe1e0;
+  border-radius: 6px;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+}
+.login_button{
+  top:60%;
+  width:50%;
+  height:300px;
+  background-color: black;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 6px;
+  margin-top: : 50%;
+  text-decoration: none;
+  font-size: 20px;
+  color:white;
+}
+.login_button:hover{
+  color:white;
+}
+.extra_text{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#ACACAC;
+}
+.extra_text1{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#7E7E7E;
+  font-size:20px;
+}
+.begin{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:#ACACAC;
+  font-size: 50px;
+}
+.createprojects{
+
+  width:auto;
+  height:auto;
+
+  background-color: #F0AB33;
+
+  text-decoration: none;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-width:1px;
+  border-color:  #F0AB33;
+}
+.findprojects{
+  width:auto;
+  height:auto;
+  background-color: #B24AFF;
+  text-decoration: none;
+  color:white;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin:10%;
+}
+.createprojects:hover{
+  background-color: #C38720;
+  transition: all .15s ease-in-out;
+  border-width:1px;
+  border-color: #C38720;
+}
+.findprojects:hover{
+
+  width:auto;
+  height:auto;
+  background-color: #8B28D5;
+  transition: all .15s ease-in-out;
+  text-decoration: none;
+}
+.built_on{
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:gray;
+}
+.github_logo{
+  background-image: url(/static/images/GitHub_Logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 130px;
+
+}
+.github_icon{
+  background-image: url(/static/images/GitHub-Mark-120px-plus.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 78px;
+}
+.gitter_logo{
+  /*
+  background-image: url(/static/images/svgporn-gitter.png);
+  */
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/2/2f/Gitter_logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100px;
+}
+.tag_badge{
+  width:auto;
+  height:40px;
+  background-color: #B6DEF7;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top:5px;
+  padding-bottom: 5px;
+
+
+}
+.tag_badge:hover{
+  background-color: #9CCBE7;
+}
+</style>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);height:70px;'>
+      <!--
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/GitMeetLogo.png" width="30" height="30" alt="">
+      </a>
+      --->
+
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
+
+       </a>
+       <a href='/' style='text-decoration:none;color:color:#C2C1C1;'><span class='title' style='font-size:35px;margin-top:4px;'>GitMeet</span></a>
+      <ul class="navbar-nav mr-auto" style='float:right;'>
+    <li class="nav-item active">
+     <a class="blog_link" href="#" style='text-decoration: none;'>Docs <span class="sr-only">(current)</span></a>
+     <a class="blog_link" href="#" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+   </li>
+
+
+    </ul>
+      <form class="form-inline" style='margin-right:1%;margin-top:1%;' method='POST' action=''>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name='search_gitmeet'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='border-radius:6px;border-width:1.6px;color:white;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>Search</button>
+    </form>
+  </nav>
+  <nav aria-label="breadcrumb" style='background-color:white;'>
+    <ol class="breadcrumb" style='background-color:white;'>
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/">Search</a></li>
+      <li class="breadcrumb-item"><a href="/">{{search_stat_result.block_type}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{search_stat_result.query}}</li>
+    </ol>
+  </nav>
+
+  {%if search_stat_result.length == 0%}
+      <div class="jumbotron jumbotron-fluid" style='border-radius:5px;margin:0 auto;width:60em;'>
+        <div class="container">
+          <i class="fas fa-search-minus" style='font-size:2.8em'></i>
+
+          <div class='spacer' style='height:10px;'></div>
+          <h1 class="display-4" style='font-size:30px;'>No users, projects, or jobs found in "{{search_stat_result.block_type}}" for "{{search_stat_result.query}}"</h1>
+          <p class="lead">Please try again:</p>
+          <form action='' method='POST'>
+            <div class="form-group mx-sm-3 mb-2">
+
+              <input type="text" class="form-control" id="inputPassword2" value="{{search_stat_result.query}}" name='search_gitmeet'>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </form>
+        </div>
+      </div>
+      {%else%}
+      <nav class="nav">
+        <div class='spacer' style='width:20%;'></div>
+        <h1 style='color:black;font-size:23px;'>{{'No' if search_stat_result.length == 0 else search_stat_result.length}} {{'results' if search_stat_result.length != 1 else 'result'}} in "{{search_stat_result.block_type}}s" for "{{search_stat_result.query}}"</h1>
+
+    </nav>
+    <div class='underscore' style='height:2px;background-color:gray;width:60%;margin-left:20%;'></div>
+    <div class='spacer_top' style='height:30px;'></div>
+      {%for result in search_stat_result%}
+          {%if search_stat_result.block_type == 'user'%}
+          <div class="card border-primary mb-3" style="max-width: 45rem;margin:0 auto;">
+
+            <div class="card-body text-primary">
+            <div class='container'>
+              <div class='row'>
+              </div>
+            </div>
+            <h5 class="card-title"><a href='/{{result.username}}' style='text-decoration:none;font-size:25px;'>{{result.username}}</a></h5>
+            <p class="card-text" style='color:black;'>
+              <span class="badge badge-pill badge-primary" style='font-size:13px;'>{{result.extra['reputation']}}</span>
+              developer reputation
+            </p>
+
+            <p class="card-text" style='color:black;'><i>{{result.summary}}</i></p>
+          </div>
+          </div>
+          <div class='spacer' style='height:30px;'></div>
+          {%elif search_stat_result.block_type == 'project'%}
+
+             <div class="card border-primary mb-3" style="max-width: 45rem;margin:0 auto;">
+
+              <div class="card-body text-primary">
+              <div class='container'>
+                <div class='row'>
+                </div>
+              </div>
+              <!--headers = ['title', 'description', 'owner', 'id', 'team', 'jobs', 'requests', 'options']-->
+              <h5 class="card-title"><a href='/{{result.owner}}/{{result.title}}' style='text-decoration:none;font-size:25px;'>{{result.title}}</a></h5>
+
+
+              <p class="card-text" style='color:black;'>{{result.description}}</p>
+              {%if result.options.tags != []%}
+                {%for tag in result.options.tags%}
+                  <span class="tag_badge" style='margin-left:10px;'>{{tag}}</span>
+
+                {%endfor%}
+              {%endif%}
+              <div class='separator' style='height:20px;'></div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    {%if result.jobs.length%}
+                      <p>{{result.jobs.length}} {{ 'Job' if result.jobs.length == 1 else 'Jobs' }}
+                        {%for job in result.jobs%}
+
+                        {%endfor%}
+                    {%else%}
+                        <p>No jobs</p>
+                    {%endif%}
+                  </div>
+                  <div class="col-sm">
+                    {%if result.team.length%}
+                      {%if result.team.length==1%}
+                        <a href='' data-toggle="modal" data-target="#team{{result.title}}">1 Person</a>
+                        <!--<p>1 Person</p>-->
+                      {%else%}
+                      <a href='' data-toggle="modal" data-target="#team{{result.title}}">{{result.team.length}} People</a>
+
+
+                      {%endif%}
+                    {%else%}
+                      <p>No Teammembers</p>
+                    {%endif%}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div class="modal" id="team{{result.title}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header" style='border-bottom:none;'>
+                <h5 class="modal-title" id="exampleModalLabel">Team for <span style='color:#007bff'>{{result.title}} <span class="badge badge-pill badge-primary">{{result.team.length}} {{'people' if result.team.length > 1 or result.team.length == 0 else 'person'}}</span></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+                <ul class="list-group">
+                  {%for person in result.team%}
+                    <li class="list-group-item">
+                      <a href='/{{person.username}}' style='text-decoration:none;color:black;font-size:18px;'>
+                      <strong>{{person.username}}</strong>
+                    </a>
+                    <p>
+                      <i class="fas fa-list-ul" style='font-size:0.8em'></i>
+
+
+                      {{person.job}}</p>
+                    </li>
+                  {%endfor%}
+
+
+                </ul>
+
+              <div class="modal-footer" style='border-top:none;'>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+            {%elif search_stat_result.block_type == 'job'%}
+
+                     <div class="card border-primary mb-3" style="max-width: 45rem;margin:0 auto;">
+
+                <div class="card-body text-primary">
+              <div class='container'>
+                <div class='row'>
+                </div>
+              </div>
+              <h5 class="card-title"><a href='/{{result}}' style='text-decoration:none;font-size:25px;'>{{result.job_title}}</a></h5>
+
+              <p class="card-text" style='color:black;'><i>{{result.job_description}}</i></p>
+            </div>
+            </div>
+
+          {%endif%}
+      {%endfor%}
+      {%endif%}
+
+  </body>
+</html>
