@@ -15,7 +15,7 @@ class SearchBlock:
         self.block_type = block_type
         self.query = query
         self.users = [i for i in tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/userprofiles.db').get_username_name_avatar_email_summary_id_extra('users') if str(self.query).lower() in str(i[0]).lower()]
-        self.projects = [i for i in tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/projects.db').get_projectname_description_owner_id_team_teamneeded_requests_extra('projects') if str(self.query).lower() in str(i[0]).lower() or str(self.query).lower() in str(i[1]).lower()]
+        self.projects = [i for i in tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/projects.db').get_projectname_description_owner_id_team_teamneeded_requests_extra('projects') if str(self.query).lower() in str(i[0]).lower() or str(self.query).lower() in str(i[1]).lower() or str(self.query.lower()) in str(i[2]).lower()]
         self.jobs = list(itertools.chain(*[[[job]+[i[0], i[1]] for job in filter(None, i[-1]) if str(self.query).lower() in (' ' if not job['job_description'] else str(job['job_description']).lower()) or str(self.query).lower() in (' ' if not job['job_title'] else str(job['job_title']).lower())] for i in tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/projects.db').get_projectname_owner_teamneeded('projects') if i[-1]]))
         #self.jobs = [[job for job in i[-1]] for i in tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/projects.db').get_projectname_owner_teamneeded('projects') if i[-1]]
 class UserSearch(SearchBlock):
