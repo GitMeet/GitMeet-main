@@ -10,7 +10,7 @@ class Recommendations:
         self.user_messages = [b for a, b in self.recog_db.get_touser_messages('dev_recs') if a == self.user]
         print "in constructor of dev_recogs.py", self.user_messages
     def __len__(self):
-        return 0 if not self.user_messages else (0 if self.user_messages and not self.user_messages[0] else len(self.user_messages))
+        return 0 if not self.user_messages else (0 if self.user_messages and not self.user_messages[0] else len(self.user_messages[0]))
 
     @property
     def length(self):
