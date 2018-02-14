@@ -70,17 +70,26 @@ class Requests:
         print "in __init__, self.all_requests", self.all_requests
     @property
     def length(self):
-        return sum([len(b) for a, b in self.all_requests])
+        current_projects = {a:c for a, b, c in self.project_db_instance.get_projectname_owner_teamneeded('projects') if b == self.current_user}
+        print('current_projects', current_projects)
+        print 'calcuated results', sum([len([i for i in b if any(any(i['for_job'] == h['id'] for h in d) for name, d in current_projects.items() if d and name == i['name'])]) for a, b in self.all_requests])
+        return sum([len([i for i in b if any(any(i['for_job'] == h['id'] for h in d) for name, d in current_projects.items() if d and name == i['name'])]) for a, b in self.all_requests])
 
+    def __len__(self):
+        current_projects = {a:c for a, b, c in self.project_db_instance.get_projectname_owner_teamneeded('projects') if b == self.current_user}
+        return sum([len([i for i in b if any(any(i['for_job'] == h['id'] for h in d) for name, d in current_projects.items() if d and name == i['name'])]) for a, b in self.all_requests])
     def __bool__(self):
         return len(self.all_requests) > 0
 
     def __iter__(self):
-        if not self.all_requests:
+        if not self.all_requests or not len(self):
             raise StopIteration('need to check if list is empty instead')
         for target_project, requests in self.all_requests:
             for request in requests:
+                print "request is ", request
                 user_data = [i for i in self.user_db_instance.get_username_name_avatar_email_summary_id_extra('users') if i[0] == request['name']][0]
+                print('this is the output close to the exception that is being fixed: ', [c for a, b, c in self.project_db_instance.get_projectname_owner_teamneeded('projects') if a == target_project][0])
+
                 the_job = filter(lambda x:x['id'] == request['for_job'], [c for a, b, c in self.project_db_instance.get_projectname_owner_teamneeded('projects') if a == target_project][0])[0]
                 self.experience = [[a, b] for a, b, c in self.project_db_instance.get_projectname_owner_team('projects') if c and any(i[0] == request['name'] for i in c)]
                 self.tags = self.project_db_instance.get_projectname_team_extra('projects')
