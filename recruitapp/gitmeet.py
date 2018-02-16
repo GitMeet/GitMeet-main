@@ -36,17 +36,17 @@ import flask_mail
 
 #BUG:for bonus awards may have to update rep in repdb, and then display two messages: one for the rep increase (success), and another for the project name (info)
 app = flask.Flask(__name__)
-app.config['GITHUB_CLIENT_ID'] = '*****************'
+app.config['GITHUB_CLIENT_ID'] = '***************'
 app.config['GITHUB_CLIENT_SECRET'] = '******************************'
 github = GitHub(app)
 userdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/userprofiles.db')
 repdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/user_rep.db')
-app.config['MAIL_SERVER'] = '*****************'
+app.config['MAIL_SERVER'] = '********************'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = '****************'
-app.config['MAIL_PASSWORD'] = '****************'
+app.config['MAIL_USERNAME'] = '***************'
+app.config['MAIL_PASSWORD'] = '***************'
 app.secret_key = ''.join(random.choice(string.ascii_lowercase+string.ascii_uppercase + ''.join(map(str, range(10)))) for i in range(random.randint(10, 24)))
 mail = flask_mail.Mail(app)
 def send_email(subject, sender, recipients, text_body, html_body):
@@ -63,6 +63,14 @@ def log_results(*args, **kwargs):
     else:
         f.write("{}/{}/{}:{}:{}:{} ".format(current_time.day, current_time.month, current_time.year, current_time.hour, current_time.minute)+', '.join(map(str, args))+'\n')
     f.close()
+
+
+def daily_user(username, filename='daily_users.txt'):
+    current_time = datetime.datetime.now()
+    with open("/home/jamespetullo/gitmeet/{}".format(filename), 'a') as f:
+        f.write('{} {}\n'.format(username, "{}-{}-{}".format(current_time.month, current_time.day, current_time.year)))
+
+
 '''
 tablename: users
 username text, name text, avatar text, email text, summary text, id int, extra text
@@ -1127,7 +1135,7 @@ def authorized(oauth_token):
 
     #print "truthy", any(user.username == i[0] for i in userdb.get_username('users'))
 
-
+    daily_user(user.username)
     if not any(user.username == i[0] for i in userdb.get_username('users')):
         global userdb
         global repdb
@@ -1194,6 +1202,27 @@ def blog():
         global blogdb
         blogdb.insert('posts', ('title', title), ('snapshot', summary), ('author', user.username), ('body', body), ('date', "{}-{}-{}".format(post_date.day, post_date.month, post_date.year)), ('tags', tags))
     return flask.render_template('blog.html', blog = blog_articles.Blog(username = user.username))
+
+@app.route('/post_blog', methods=['GET', 'POST'])
+def post_blog():
+
+    if str(user.username) not in ['Ajax12345', 'GitMeet']:
+        return flask.render_template('unauthorized.html')
+    if flask.request.method == 'POST':
+        t = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/blogposts.db')
+        post_data = datetime.datetime.now()
+        t.insert('posts', ('title', flask.request.form['title']), ('snapshot', flask.request.form['summary']), ('author', flask.request.form['name']), ('body', flask.request.form['post']), ('date', "{}-{}-{}".format(post_date.month, post_date.day, post_date.year)), ('tags', re.split(',\s*', flask.request.form['tags'])))
+        return flask.redirect('/blog')
+    daily_user_data = [i.strip('\n').split() for i in open('/home/jamespetullo/gitmeet/daily_users.txt')]
+    full_daily_users = [(a, {c for c, d in b}) for a, b in itertools.groupby(sorted([[' '.join(i[:-1]), i[-1]] for i in daily_user_data], key=lambda (x, y):y), key=lambda (x, y):y)]
+    final_data = sum(len(b) for a, b in full_daily_users)/float(100)
+    return flask.render_template('admin_blog_management.html', username=user.username, percentage = final_data*100, color='success' if final_data >= 0.9 else "info" if final_data < 90 and final_data > 50 else "danger")
+
+@app.route('/account_settings', methods=['GET', 'POST'])
+def account_settings():
+    if not user.username:
+        return flask.redirect('/')
+    return flask.render_template('account_settings.html')
 
 @app.errorhandler(404)
 def page_not_found(e, methods=['GET', 'POST']):
