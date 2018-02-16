@@ -1,0 +1,143 @@
+<html>
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Actor|Asap);
+#change_profile{
+  height:80%;
+  width:100%;
+  text-align: center;
+}
+#change_profile .intro{
+  color:black;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 35px;
+}
+#change_profile .navbar{
+  background-color: white !important;
+  width:40% !important;
+}
+.title{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#C2C1C1;
+    font-size: 30px;
+  }
+.cancel{
+  height:70px;
+  margin-left: 10px;
+  font-family: 'Actor', sans-serif;
+  font-family: 'Asap', sans-serif;
+  color:gray;
+  border-radius: 6px;
+  border-width:2px;
+  border-style: solid;
+  border-color: #B5B5B5;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 20px;
+  padding-left:20px;
+}
+.cancel:hover{
+  background-color: #B5B5B5;
+  transition: all .15s ease-in-out;
+}
+.blog_link{
+    color:#AFAEAE;
+    margin-left: 40px;
+    font-size: 20px;
+    float:right;
+  }
+.invite_button{
+  background-color: #B24AFF;
+  border-width:10px;
+  border-style:solid;
+  border-radius: 6px;
+  border-color:#B24AFF;
+}
+.invite_button:hover{
+  background-color: #8B28D5;
+  border-color:#8B28D5;
+  transition: all .15s ease-in-out;
+
+}
+.accept_user_project{
+  width:auto;
+  height:auto;
+  border:none;
+  background-color:#1FD962;
+  border-radius: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+.accept_user_project:hover{
+  background-color: #10AD49;
+  transition: all .15s ease-in-out;
+}
+  </style>
+
+  <body>
+    <head>
+      <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    </head>
+    <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
+
+
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
+
+       </a>
+       <a href='/' style='text-decoration:none;color:color:#C2C1C1;'><span class='title' style='font-size:35px;margin-top:4px;'>GitMeet</span></a>
+
+      <ul class="navbar-nav mr-auto">
+
+   <li class="nav-item active">
+     <a class="blog_link" href="/features" style='text-decoration: none;'>Docs <span class="sr-only">(current)</span></a>
+     <a class="blog_link" href="/blog" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+   </li>
+    </ul>
+  </nav>
+  <nav aria-label="breadcrumb" style='width:60%;' class='navbar'>
+        <ol class="breadcrumb" style='background-color:white;'>
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
+        </ol>
+      </nav>
+
+    <div class='container'>
+      <div class='row'>
+        <div class='col'>
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Settings
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a href='/settings' style='color:black;text-decoration:none'>Personal Settings</a></li>
+              <li class="list-group-item"><strong>Account Settings</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class='col-8'>
+          <div class="card" style='width:40em;margin:0 auto;'>
+            <div class="card-header">
+              <h1 class="text-danger" style='float:left;font-size:30px;'>Advanced</h1>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-danger" style='font-size:25px;'>Delete Account</h5>
+              <p class="card-text">Your account will be deleted and you will be removed from all projects that you are currently working on.</p>
+              <a href="/delete_account" class="btn btn-danger">Delete Account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
