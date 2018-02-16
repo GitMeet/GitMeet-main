@@ -16,6 +16,12 @@
   background-color: white !important;
   width:40% !important;
 }
+.title{
+    font-family: 'Actor', sans-serif;
+    font-family: 'Asap', sans-serif;
+    color:#C2C1C1;
+    font-size: 30px;
+  }
 .cancel{
   height:70px;
   margin-left: 10px;
@@ -36,6 +42,12 @@
   background-color: #B5B5B5;
   transition: all .15s ease-in-out;
 }
+.blog_link{
+    color:#AFAEAE;
+    margin-left: 40px;
+    font-size: 20px;
+    float:right;
+  }
 .invite_button{
   background-color: #B24AFF;
   border-width:10px;
@@ -78,7 +90,19 @@
     <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
 
 
-      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
+
+       </a>
+       <a href='/' style='text-decoration:none;color:color:#C2C1C1;'><span class='title' style='font-size:35px;margin-top:4px;'>GitMeet</span></a>
+
+      <ul class="navbar-nav mr-auto">
+
+   <li class="nav-item active">
+     <a class="blog_link" href="/features" style='text-decoration: none;'>Docs <span class="sr-only">(current)</span></a>
+     <a class="blog_link" href="/blog" style='text-decoration: none;'>Blog <span class="sr-only">(current)</span></a>
+   </li>
+    </ul>
 
       <form class="form-inline">
 
@@ -119,7 +143,7 @@
 
             <!--<div class="dropdown-divider"></div>-->
             <!--
-            Here, will probably have to trigger popup with user developer report
+            Here, will probabily have to trigger popup with user developer report
             Instead of full request, just say "New Request from {{username}}"
             -->
             {%if job_requests.length > 0%}
@@ -291,77 +315,27 @@
         </ol>
       </nav>
 
-      <h1 class='intro'><strong>Profile Settings</strong></h1>
 
-  <div class='spacer' style='height:10px;'></div>
-  <!-- Button trigger modal -->
-<button type="button" id='recommendation_profile' class="invite_button" data-toggle="modal" data-target="#exampleModal" style='float:right;margin-right:20%;margin-top:1%;color:white'  data-toggle1="tooltip" data-placement="bottom" title="your developer requests card">
- Quick View
-</button>
-
-<!-- Modal -->
-<div class="modal bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelCenterTitle" aria-hidden="false">
-  <!--<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">-->
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style='border-bottom:none;background-color:#B24AFF'>
-          <h5 class="modal-title" id="exampleModalLongTitle">Quick Look</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="card-group">
-            <div class="card" style='border-top:none;border-left:none;border-bottom:none;'>
-              <div class="card-img-top" style='width:auto;height:auto;margin:0 auto;'>
-                <div class='user_avatar' style='border-radius:10px;background-image:url({{view_avatar}});background-repeat: no-repeat;background-size:200px;height:200px;width:200px;padding-top:200px;margin-top:10%;'>
-
-                </div>
-              </div>
-              <div class='spacing' style='height:100px;'></div>
-
+    <div class='container'>
+      <div class='row'>
+        <div class='col'>
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Settings
             </div>
-            <div class="card" style='border-top:none;border-right:none;border-bottom:none;text-align:center;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;'>
-
-              <div class="card-body">
-                <h5 class="card-title" style='font-size:30px;'><strong>{{username}}</strong></h5>
-                <a href="https://github.com/{{username}}" class="github_home_page" style='color:black;text-decoration:none;'>
-
-                  <i class="fab fa-github" style="font-size: 2.23em;"></i>
-                  {{username}}
-                </a>
-                <div class='spacing' style='height:25px;'></div>
-                {%if regular_tags%}
-                  {%for tag, color in regular_tags%}
-                      <span class="badge badge-primary" style='background-color:{{color}};height:25px;font-size:15px;margin-left:10px;'>{{tag}}</span>
-                    {%endfor%}
-                {%endif%}
-                <div class='spacing' style='height:60px;'></div>
-                <div class="card border-primary mb-3" style="max-width: 20rem;border-radius:10px;">
-                  <div class="card-body text-primary">
-
-                    <p class="card-text" style='color:black'>{{user_bio}}</p>
-                  </div>
-                </div>
-
-
-                <div class='spacing' style='height:30px;'></div>
-                <p class="card-text"><strong style="font-weight:bold">10000</strong> developer reputation</p>
-              </div>
-            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Personal Settings</strong></li>
+              <li class="list-group-item"><a href='/account_settings' style='color:black;text-decoration:none'>Account Settings</a></li>
+            </ul>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class='col-8'>
 
-      <div class='underscore' style='width:60%;height:2px;background-color:gray;margin:0 auto;'></div>
-        <div class='spacer' style='height:30px;'></div>
-      <form action='' method='POST' style='text-align:left;width:40%;margin:0 auto;'>
+
+          <h1 style='margin-left:-3em;'>Profile Settings</h1>
+          <div class='spacer' style='height:40px;'></div>
+      <form action='' method='POST' style='text-align:left;width:100%;margin:0 auto;'>
         <div class="form-row">
           <div class="col">
             <div class="form-group">
@@ -402,13 +376,13 @@
 
         <div class="form-group">
 
-          <select class="custom-select" id = 'receive_invites' name='receive_invites'>
-            <option selected>I wish to receive developer invitations</option>
-            <option value="1">I do not wish to receive developer invitations</option>
+          <select class="custom-select" id = 'recieve_invites' name='recieve_invites'>
+            <option selected>I wish to recieve developer invitations</option>
+            <option value="1">I do not wish to recieve developer invitations</option>
           </select>
         </div>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          Please note that opting to not receive developer invitations means that project creators will not be able to invite you to join their projects
+          Please note that opting to not recieve developer invitations means that project creators will not be able to invite you to join their projects
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -419,8 +393,13 @@
 
 
       </form>
+        <div class='spacer' style='height:60px;'></div>
+
+
 
     </div>
+  </div>
+</div>
 
   </body>
   <script>
