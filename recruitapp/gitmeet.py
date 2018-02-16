@@ -13,11 +13,13 @@ import random
 import project as project_object
 import gitmeet_user
 import functools
+import account_deletion as delete_account
 import datetime
 import rep_info
 import search_stats
 import common_errors as error
 import os
+import delete_account as purge_user_account
 import dev_requests
 import confirms
 import project_team
@@ -41,12 +43,12 @@ app.config['GITHUB_CLIENT_SECRET'] = '******************************'
 github = GitHub(app)
 userdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/userprofiles.db')
 repdb = tigerSqlite.Sqlite('/home/jamespetullo/gitmeet/user_rep.db')
-app.config['MAIL_SERVER'] = '********************'
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = '***************'
-app.config['MAIL_PASSWORD'] = '***************'
+app.config['MAIL_USERNAME'] = '*************'
+app.config['MAIL_PASSWORD'] = '****************'
 app.secret_key = ''.join(random.choice(string.ascii_lowercase+string.ascii_uppercase + ''.join(map(str, range(10)))) for i in range(random.randint(10, 24)))
 mail = flask_mail.Mail(app)
 def send_email(subject, sender, recipients, text_body, html_body):
@@ -322,6 +324,7 @@ def home():
     if flask.request.method == 'POST':
         keyword = flask.request.form['search_gitmeet']
         return flask.redirect('/search/{}/{}'.format(keyword, 1))
+
 
     return flask.render_template('new_home.html', user=user.username)
 
@@ -906,7 +909,10 @@ def user_profile(username):
     if flask.request.method == 'POST':
         keyword = flask.request.form['search_gitmeet']
         return flask.redirect('/search/{}/{}'.format(keyword, 1))
-    home_visitor_data = [] if not user.username else [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
+    try:
+        home_visitor_data = [] if not user.username else [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == user.username][0]
+    except:
+        return flask.redirect('/')
     try:
         user_data = [i for i in userdb.get_username_name_avatar_email_summary_id_extra('users') if i[0] == username][0]
     except IndexError:
@@ -1223,6 +1229,17 @@ def account_settings():
     if not user.username:
         return flask.redirect('/')
     return flask.render_template('account_settings.html')
+
+@app.route('/delete_account', methods=['GET', 'POST'])
+def delete_account():
+    if not user.username:
+        return flask.redirect('/')
+    with purge_user_account.remove_user(user.username) as delete:
+        pass
+    print('user.username after deletion', user.username)
+    flask.session.clear()
+
+    return flask.redirect('/')
 
 @app.errorhandler(404)
 def page_not_found(e, methods=['GET', 'POST']):
