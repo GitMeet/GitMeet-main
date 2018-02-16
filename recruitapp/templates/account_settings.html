@@ -133,7 +133,28 @@
             <div class="card-body">
               <h5 class="card-title text-danger" style='font-size:25px;'>Delete Account</h5>
               <p class="card-text">Your account will be deleted and you will be removed from all projects that you are currently working on.</p>
-              <a href="/delete_account" class="btn btn-danger">Delete Account</a>
+              <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#checkUser">Delete Account</a>
+              <div class="modal" id="checkUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header" style='border-bottom:none;'>
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" style='text-align:center;'>
+                      <h1 style='font-size:20px;'>Are you sure you wish to continue?</h1>
+                          <a href="/delete_account" class="btn btn-danger">Delete Account</a>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="modal-footer" style='border-top:none'>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
