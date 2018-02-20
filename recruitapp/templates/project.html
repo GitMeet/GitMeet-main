@@ -84,6 +84,19 @@
   color:white;
 
 }
+.send_join_request_button{
+    color:white;
+    padding:6px 20px;
+    border-style:solid;
+    border-color:#FC5C3A;
+    border-radius:6px;
+    background-color:#FC5C3A;
+    font-size:20px;
+}
+.send_join_request_button:hover{
+    background-color:#CB5339;
+    border-color:#CB5339;
+}
 .disable_join_requests:hover{
   color:white;
   background-color: #de7e00;
@@ -219,7 +232,18 @@
     <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
 
 
-      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+        <a href='/'>
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
+
+        </a>
+            <ul class="navbar-nav mr-auto" style='float:right;'>
+    <li class="nav-item active">
+     <a class="blog_link" href="#" style='text-decoration: none;color:gray;font-size:20px;color:#C2C1C1;'>Docs <span class="sr-only">(current)</span></a>
+
+   </li>
+
+
+    </ul>
 
       <form class="form-inline" method='POST' action=''>
 
@@ -261,7 +285,7 @@
 
             <!--<div class="dropdown-divider"></div>-->
             <!--
-            Here, will probably have to trigger popup with user developer report
+            Here, will probabily have to trigger popup with user developer report
             Instead of full request, just say "New Request from {{username}}"
             -->
             {%if job_requests.length > 0%}
@@ -636,7 +660,7 @@
                     </div>
                     <div class='spacer' style='height:15px;'></div>
                     <label for="tags">Project Tags</label>
-                    <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scraping,Multi-Processing" value='{{tag_values}}'>
+                    <input class="form-control" id='tags' name='project_tags' type="text" aria-describedby="tag_instructions" placeholder="i.e Python,C,Web Scaping,Multi-Processing" value='{{tag_values}}'>
                     <small id="tag_instructions" class="form-text text-muted">
                       Enter project tags separated by commas
                     </small>
@@ -715,7 +739,7 @@
                     <label for="description">Job Tasks</label>
                     <textarea class="form-control" id="description" rows="3" name='job_description' aria-describedby="instructions" required></textarea>
                     <small id="instructions" class="form-text text-muted">
-                      Add relevant duties
+                      Add revelent duties
                     </small>
                   </div>
                   <div class="invalid-feedback">
@@ -886,26 +910,24 @@
               {%if visitor != owner%}
                 <!--<button type="button" class="btn btn-link">Join</button>-->
                 {%if visitor%}
-                  <a href='/join_project/{{projectname}}/{{job.id}}'>Join</a>
+                  <a href='/join_project/{{projectname}}/{{job.id}}' class='send_join_request_button' style='text-decoration:none;color:white;'>Join</a>
                 {%endif%}
 
               {%endif%}
 
             </div>
             <div class="card-footer" style='border-top:none;background-color:#BCBCBC;'>
-              <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://www.facebook.com/profile.php?id=100011354314736" title="Facebook share" target="_blank" style='color:black;text-decoration:none;'>
-              <span class="badge badge-secondary" style='background-color:#3b5998;'><i class="fab fa-facebook-f" style='font-size:1.6em;color:white;margin-left:4px;margin-right:4px;'></i></span>
-              </a> <!-- here, will have to change with gitmeet profile on facebook-->
+
+              <!-- here, will have to change with gitmeet profile on facebook-->
               <a class="twitter customer share" href="https://twitter.com/share?url=https://gitmeet.com/{{owner}}/{{projectname}}&amp;text=Can you assist with project '{{projectname}}' on @GitMeet? '{{job.title}}': &amp;hashtags=GitMeet" title="Twitter share" target="_blank" style='text-decoration:none;color:black;'>
                 <span class="badge badge-secondary" style='background-color:#55acee;'><i class="fab fa-twitter" style='font-size:1.6em;color:white;'></i></span>
 
               </a>
-              <a class="google_plus customer share" href="https://plus.google.com/share?url=https://gitmeet.com" title="Google Plus Share" target="_blank" style='text-decoration:none;color:black'>
-                <span class="badge badge-secondary" style='background-color:#dd4b39;'><i class="fab fa-google-plus-g" style='font-size:1.6em;color:white;'></i></span>
 
 
 
-              </a> <!--here, will have to change with gitmeet profile on Google + -->
+
+
 
             </div>
 
@@ -956,11 +978,8 @@
     <div class="row">
       <div class="col-sm">
         <div class="col" style='margin-top:1em;'>
-          <a href='http://www.twitter.com' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
-          <a href='http://www.facebook.com' style='text-decoration:none'><i class="fab fa-facebook" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
-          <a href='http://www.youtube.com' style='text-decoration:none'><i class="fab fa-youtube" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+          <a href='https://twitter.com/GitMeet' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
 
-          <a href='http://www.linkedin.com' style='text-decoration:none'><i class="fab fa-linkedin" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
         </div>
       </div>
 
@@ -1010,9 +1029,9 @@
    * jQuery function to prevent default anchor event and take the href * and the title to make a share popup
    *
    * @param  {[object]} e           [Mouse event]
-   * @param  {[integer]} intWidth   [Popup width default 500]
-   * @param  {[integer]} intHeight  [Popup height default 400]
-   * @param  {[boolean]} blnResize  [Is popup resizable default true]
+   * @param  {[integer]} intWidth   [Popup width defalut 500]
+   * @param  {[integer]} intHeight  [Popup height defalut 400]
+   * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
    */
   $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
 
@@ -1038,7 +1057,7 @@
   {%if new_rep.rep > 0%}
   var delay = 2000;
          setTimeout(function() {
-           $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer reputation!',{
+           $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer repution!',{
                type: 'success',
                delay: 4000,
                width: 400,
