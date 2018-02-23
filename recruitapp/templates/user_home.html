@@ -469,7 +469,10 @@
     <nav class="navbar navbar-light bg-light justify-content-between" style='background: linear-gradient(to right, #9B42D9 , #F0AB33);'>
 
 
-      <a href='/' class="navbar-brand" style='color:gray;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;color:#B4B4B1;font-size: 20px;'>GitMeet</a>
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/gitmeetlogo1.png" width="83" height="73" class="d-inline-block align-top" alt="">
+
+       </a>
 
       <form class="form-inline" action='' method='POST'>
 
@@ -518,7 +521,7 @@
 
             <!--<div class="dropdown-divider"></div>-->
             <!--
-            Here, will probably have to trigger popup with user developer report
+            Here, will probabily have to trigger popup with user developer report
             Instead of full request, just say "New Request from {{username}}"
             -->
             {%if job_requests.length%}
@@ -682,7 +685,7 @@
 
   <div id="top_bar">
     {%if visitor and user.username != visitor%}
-      {%if user.extra.receive_invites[0] == "I wish to receive developer invitations"%}
+      {%if user.extra.recieve_invites[0] == "I wish to recieve developer invitations"%}
         {%if invitations.length > 0%}
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#invite_user_pannel" style='float:left;margin-top: 2%;margin-left: 5%;'>
         <i class="fas fa-user-plus" style='font-size:1.3em'></i>
@@ -860,7 +863,7 @@
       -->
       <div class='reputation_chart'>
         <div class='spacer' style='height:23px;'></div>
-        <a href='' style='text-decoration:none;color:black;' data-toggle="modal" data-target="#reputation_chart">
+        <a href='' style='text-decoration:none;color:black;'>
           <span class='developer_reputation'>
             <span class="badge badge-pill badge-primary" style='font-size:20px;text-align:center;'>{{user.extra.reputation}}</span>
             Developer Reputation
@@ -922,7 +925,7 @@
     {%if user.tag_length%}
       <p style='text-align:center;font-family: "Actor", sans-serif;font-family: "Asap", sans-serif;font-size:20px;'><strong>My developer skills:</strong></p>
     {%endif%}
-    <div class='user_tags' style='width:40%;height:40px;margin:0 auto;text-align:center;'>
+    <div class='user_tags' style='width:70%;height:40px;margin:0 auto;text-align:center;'>
       {%for tag, color in user.extra.tags%}
         <span class="badge badge-primary" style='background-color:{{color}};height:30px;font-size:20px;margin-left:10px;'>{{tag}}</span>
 
@@ -975,9 +978,11 @@
                 <i class="fa fa-remove" style="font-size:40px;"></i>
               </a>
             -->
+            {%if visitor == user.username%}
             <button type="button" class="remove_project_icon" data-toggle="modal" data-target="#{{project.title}}DeleteCenter" style='float:right;border:none;background:none;' data-toggle="tooltip" data-placement="bottom" title="remove project">
               <i class="fas fa-times" style="font-size:35px;"></i>
             </button>
+            {%endif%}
 
             <!-- Modal -->
             <div class="modal" id="{{project.title}}DeleteCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1093,9 +1098,7 @@
             <div class="col-sm">
               <div class="col" style='margin-top:1em;'>
                 <a href='http://www.twitter.com' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
-                <a href='http://www.facebook.com' style='text-decoration:none'><i class="fab fa-facebook-square" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
-                <a href='http://www.youtube.com' style='text-decoration:none'><i class="fab fa-youtube" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
-                <a href='http://www.linkedin.com' style='text-decoration:none'><i class="fab fa-linkedin-in" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+
               </div>
             </div>
 
@@ -1153,7 +1156,7 @@
                 <div class='extra_warning'>
                 <div class="alert alert-warning alert-dismissable">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Note:</strong> Some repos have been omitted due to incomplete descriptions. <a href="/requirements#no_readme" class="alert-link">Why is this?</a>.
+                  <strong>Note:</strong> Some repos have been ommitted due to incomplete descriptions. <a href="/requirements#no_readme" class="alert-link">Why is this?</a>.
                 </div>
 
               </div>
@@ -1213,10 +1216,8 @@
           <div class="row">
             <div class="col-sm">
               <div class="col" style='margin-top:1em;'>
-                <a href='http://www.twitter.com' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
-                <a href='http://www.facebook.com' style='text-decoration:none'><i class="fab fa-facebook-square" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
-                <a href='http://www.youtube.com' style='text-decoration:none'><i class="fab fa-youtube" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
-                <a href='http://www.linkedin.com' style='text-decoration:none'><i class="fab fa-linkedin-in" aria-hidden="true" style="font-size: 2.23em;margin-left:20px;"></i></a>
+                <a href='https://twitter.com/GitMeet' style='text-decoration:none'><i class="fab fa-twitter" aria-hidden="true" style="font-size: 2.23em;"></i></a>
+
               </div>
             </div>
 
@@ -1324,7 +1325,7 @@ series: [{
   {%if new_rep.rep%}
     var delay = 2000;
            setTimeout(function() {
-             $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer reputation!',{
+             $.bootstrapGrowl('You earned <strong>{{new_rep.rep}}</strong> developer repution!',{
                  type: 'success',
                  delay: 4000,
                  width: 400,
